@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+{% block log_block %}
+
+
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i> List of reservations
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+  <thead class="thead">
+    <tr>
+      <th>Reserved room</th>
+      <th>Date</th>
+      <th>starts at</th>
+      <th>Duration</th>
+      <th>Validated</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for l in res_list %}
+    <tr>
+      <th scope="row">{{l.typeOf}}</th>
+      <td>{{l.date}}</td>
+      <td>{{l.startTime}}</td>
+      <td>{{l.duration}}</td>
+      <td>{{l.isValidated}}</td>
+      <td><a href={% url 'delete' l.id %} ><i class="fa fa-trash"></i></a></td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,131 @@
+
+{% extends 'base.html' %}
+{%  load staticfiles %}
+{% block class_block %}
+bg-dark
+{% endblock %}
+{% block body_block %}
+
+<br><br><br><br>
+
+<div class="row">
+    <div class="col-md-3">
+    </div>
+<div class="col-md-6">
+
+  {% load widget_tweaks %}
+  {% if registered %}
+  {% else %}
+  {% endif %}
+
+  <form method="POST"  novalidate>
+
+    {% csrf_token %}
+    {% for hidden_field in Userform.hidden_fields %}
+      {{ hidden_field }}
+    {% endfor %}
+
+    {% if Userform.non_field_errors %}
+    <div class="alert alert-danger" role="alert">
+      {% for error in Userform.non_field_errors %}
+        {{ error }}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+    <!--  Username Type    -->
+    <div class="form-group">
+      <label for="">Username</label>
+
+      {% if Userform.is_bound %}
+        {% if Userform.username.errors %}
+          {% render_field Userform.username class="form-control is-invalid" %}
+          {% for error in Userform.username.errors %}
+            <div class="invalid-feedback">
+              {{ error }}
+            </div>
+          {% endfor %}
+        {% else %}
+          {% render_field Userform.username class="form-control is-valid" %}
+        {% endif %}
+      {% else %}
+        {% render_field Userform.username class="form-control" %}
+      {% endif %}
+      {% if Userform.username.help_text %}
+        <small class="form-text text-muted">{{ Userform.username.help_text }}</small>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      <label for="">Email</label>
+
+      {% if Userform.is_bound %}
+        {% if Userform.email.errors %}
+          {% render_field Userform.email class="form-control is-invalid" %}
+          {% for error in Userform.email.errors %}
+            <div class="invalid-feedback">
+              {{ error }}
+            </div>
+          {% endfor %}
+        {% else %}
+          {% render_field Userform.email class="form-control is-valid" %}
+        {% endif %}
+      {% else %}
+        {% render_field Userform.email class="form-control" %}
+      {% endif %}
+      {% if Userform.email.help_text %}
+        <small class="form-text text-muted">{{ Userform.email.help_text }}</small>
+      {% endif %}
+    </div>
+
+    <div class="form-group">
+      <label for="">Password</label>
+
+      {% if Userform.is_bound %}
+        {% if Userform.password.errors %}
+          {% render_field Userform.password class="form-control is-invalid" %}
+          {% for error in Userform.password.errors %}
+            <div class="invalid-feedback">
+              {{ error }}
+            </div>
+          {% endfor %}
+        {% else %}
+          {% render_field Userform.password class="form-control is-valid" %}
+        {% endif %}
+      {% else %}
+        {% render_field Userform.password class="form-control" %}
+      {% endif %}
+      {% if Userform.password.help_text %}
+        <small class="form-text text-muted">{{ Userform.password.help_text }}</small>
+      {% endif %}
+    </div>
+    <div class="form-group">
+      <label for="">Startup</label>
+
+      {% if Profileform.is_bound %}
+        {% if Profileform.password.errors %}
+          {% render_field Profileform.password class="form-control is-invalid" %}
+          {% for error in Profileform.password.errors %}
+            <div class="invalid-feedback">
+              {{ error }}
+            </div>
+          {% endfor %}
+        {% else %}
+          {% render_field Profileform.startup class="form-control is-valid" %}
+        {% endif %}
+      {% else %}
+        {% render_field Profileform.startup class="form-control" %}
+      {% endif %}
+      {% if Profileform.startup.help_text %}
+        <small class="form-text text-muted">{{ Profileform.startup.help_text }}</small>
+      {% endif %}
+    </div>
+
+    <input type="submit" class="btn btn-primary" name="" value="Register">
+  </form>
+
+</div>
+
+</div>
+
+{% endblock %}

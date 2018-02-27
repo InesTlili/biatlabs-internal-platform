@@ -1,0 +1,45 @@
+
+{% extends 'base.html' %}
+{%  load staticfiles %}
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+{% block log_block %}
+
+
+<table class="table">
+  <h4>Validate reservations</h4>
+  <thead>
+    <tr>
+      <th scope="col">Reserved Space</th>
+      <th scope="col">Date</th>
+      <th scope="col">starts at</th>
+      <th scope="col">Duration</th>
+      <th scope="col">Validated</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for l in liste %}
+    <tr>
+      <th scope="row">{{l.typeOf}}</th>
+      <td>{{l.date}}</td>
+      <td>{{l.startTime}}</td>
+      <td>{{l.duration}}</td>
+      <td>{{l.isValidated}}</td>
+      <td><a href={% url 'validate' l.id %} ><i class="fa fa-check"></i>
+      <td><a href={% url 'delete' l.id %} ><i class="fa fa-trash"></i></a></td>
+
+</a></td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}

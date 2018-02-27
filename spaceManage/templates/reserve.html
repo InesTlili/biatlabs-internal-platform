@@ -1,0 +1,673 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block more_css %}
+<link rel="stylesheet" href="{% static 'clockPicker/assets/css/bootstrap-theme.css' %}">
+<link rel="stylesheet" href="{% static 'clockPicker/src/clockpicker.css' %}">
+<link rel="stylesheet" href="{% static 'clockPicker/src/standalone.css' %}">
+<link rel="stylesheet" href="{% static 'datePicker/css/bootstrap.css' %}">
+
+<link rel="stylesheet" href="{% static 'datePicker/css/datepicker.css' %}">
+
+{% endblock %}
+
+
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+{% block log_block %}
+
+    {% load widget_tweaks %}
+
+
+
+
+<p class="card-text"><small class="text-muted">{{ message }}</small></p>
+<div class="card-deck">
+  <div class="card">
+    <img class="card-img-top" src="{% static 'images/rooms/bigMeetingRoom.jpg' %}" alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title">Training room</h4>
+      <p class="card-text">This room is equiped with feature1 and feature1 added to feature1</p>
+      <form method="POST" novalidate>
+        {% csrf_token %}
+
+        {% for hidden_field in reservationform.hidden_fields %}
+          {{ hidden_field }}
+        {% endfor %}
+        {% if reservationform.non_field_errors %}
+          <div class="alert alert-danger" role="alert">
+            {% for error in reservationform.non_field_errors %}
+              {{ error }}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+  <!--   Date    -->
+
+  <ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <div class="row">
+        <div class="col">
+            <div class="form-group" style="display: inline-block">
+    <!--  <label for=""></label>-->
+    <br>
+      {% if reservationform.is_bound %}
+        {% if reservationform.date.errors %}
+        <div class="input-group datepicker">
+          <span class="input-group-addon">
+              <span><i class="fa fa-calendar"></i></span>
+          </span>
+          <input data-toggle="datepicker" type="text"   name="{{ reservationform.date.name }}" class="form-control"
+                      {% if reservationform.date.value != None %}value="{{ reservationform.date.value|stringformat:'s' }}"{% endif %}
+                      required />
+
+        </div>
+          <!--{% render_field reservationform.date class="form-control is-invalid" %}-->
+          {% for error in reservationform.date.errors %}
+            <div class="invalid-feedback">
+              {{ error }}
+            </div>
+          {% endfor %}
+        {% else %}
+        <div class="input-group datepicker">
+          <span class="input-group-addon">
+              <span><i class="fa fa-calendar"></i></span>
+          </span>
+          <input data-toggle="datepicker" type="text"   name="{{ reservationform.date.name }}" class="form-control"
+                      {% if reservationform.date.value != None %}value="{{ reservationform.date.value|stringformat:'s' }}"{% endif %}
+                      required />
+
+        </div>
+        <!--  {% render_field reservationform.date class="form-control is-valid" %}-->
+        {% endif %}
+      {% else %}
+      <div class="input-group datepicker">
+        <span class="input-group-addon">
+            <span><i class="fa fa-calendar"></i></span>
+        </span>
+        <input data-toggle="datepicker" type="text"  name="{{ reservationform.date.name }}" class="form-control"
+                    {% if reservationform.date.value != None %}value="{{ reservationform.date.value|stringformat:'s' }}"{% endif %}
+                    required />
+
+      </div>
+      <!--  {% render_field reservationform.date class="form-control" %}-->
+      {% endif %}
+      {% if reservationform.date.help_text %}
+        <small class="form-text text-muted">{{ reservationform.date.help_text }}</small>
+      {% endif %}
+  </div>
+        </div>
+
+        <div class="col">
+  <!--   startTime    -->
+  <div class="form-group" style="display: inline-block">
+              <label for=""></label>
+            <br>
+              {% if reservationform.is_bound %}
+                {% if reservationform.startTime.errors %}
+                <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                  <span class="input-group-prepend">
+                      <span class="glyphicon glyphicon-time"><i class="fa fa-clock-o"></i></span>
+                  </span>
+                    <input type="text" class="form-control" name="{{ reservationform.startTime.name }}"
+                                {% if reservationform.startTime.value != None %}value="{{ reservationform.startTime.value|stringformat:'s' }}"{% endif %}
+                                required>
+                </div>
+
+
+                  <!--{% render_field reservationform.date class="form-control is-invalid" %}-->
+                  {% for error in reservationform.startTime.errors %}
+                    <div class="invalid-feedback">
+                      {{ error }}
+                    </div>
+                  {% endfor %}
+                {% else %}
+                <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                  <span class="input-group-prepend">
+                      <span class="glyphicon glyphicon-time"><i class="fa fa-clock-o"></i></span>
+                  </span>
+                    <input type="text" class="form-control" name="{{ reservationform.startTime.name }}"
+                                {% if reservationform.startTime.value != None %}value="{{ reservationform.startTime.value|stringformat:'s' }}"{% endif %}
+                                required>
+                </div>
+                <!--  {% render_field reservationform.date class="form-control is-valid" %}-->
+                {% endif %}
+              {% else %}
+          <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                <span class="input-group-prepend">
+                    <span class="glyphicon glyphicon-time"><i class="fa fa-clock-o"></i></span>
+                </span>
+                  <input type="text" class="form-control" name="{{ reservationform.startTime.name }}"
+                              {% if reservationform.startTime.value != None %}value="{{ reservationform.startTime.value|stringformat:'s' }}"{% endif %}
+                              required>
+              </div>
+              <!--  {% render_field reservationform.date class="form-control" %}-->
+              {% endif %}
+
+              {% if reservationform.startTime.help_text %}
+                <small class="form-text text-muted">{{ reservationform.startTime.help_text }}</small>
+              {% endif %}
+</div>
+        </div>
+
+    </li>
+  <!--  Duration    -->
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col">
+      <div class="form-group " style="display: inline-block">
+          <label for="">Duration (min)</label>
+          {% if reservationform.is_bound %}
+            {% if reservationform.duration.errors %}
+              {% render_field reservationform.duration class="form-control is-invalid" %}
+              {% for error in reservationform.duration.errors %}
+                <div class="invalid-feedback">
+                  {{ error }}
+                </div>
+              {% endfor %}
+            {% else %}
+              {% render_field reservationform.duration class="form-control is-valid" %}
+            {% endif %}
+          {% else %}
+            {% render_field reservationform.duration class="form-control" %}
+          {% endif %}
+
+          {% if reservationform.duration.help_text %}
+            <small class="form-text text-muted">{{ reservationform.duration.help_text }}</small>
+          {% endif %}
+      </div>
+    </div>
+
+      <div class="col">
+    <!-- Extra time -->
+  <div class="form-group row " style="display: inline-block">
+    <label for="">Extra Time (hrs)</label>
+
+
+    {% if reservationform.is_bound %}
+      {% if reservationform.extraTime.errors %}
+        {% render_field reservationform.extraTime class="form-control is-invalid" %}
+        {% for error in reservationform.extraTime.errors %}
+          <div class="invalid-feedback">
+            {{ error }}
+          </div>
+        {% endfor %}
+      {% else %}
+        {% render_field reservationform.extraTime class="form-control is-valid" %}
+      {% endif %}
+    {% else %}
+      {% render_field reservationform.extraTime class="form-control" %}
+    {% endif %}
+
+    {% if reservationform.extraTime.help_text %}
+      <small class="form-text text-muted">{{ reservationform.extraTime.help_text }}</small>
+    {% endif %}
+  </div>
+</div>
+    </div>
+  </li>
+  </ul>
+  <!--  Room Type    -->
+<div class="form-group" hidden>
+    <input type="text" name="{{ reservationform.typeOf.name }}"
+              value="Training Room"
+              required/>
+</div>
+        <button type="submit" class="btn btn-primary">Reserve</button>
+
+      </form>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="card">
+    <img class="card-img-top" src="{% static 'images/rooms/smallMeetingRoom.jpg' %}" alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title">Small meeting room</h4>
+      <p class="card-text">This room is equiped with feature1 and feature2 added to feature3</p>
+  <form method="POST" novalidate>
+        {% csrf_token %}
+
+        {% for hidden_field in reservationform.hidden_fields %}
+          {{ hidden_field }}
+        {% endfor %}
+        {% if reservationform.non_field_errors %}
+          <div class="alert alert-danger" role="alert">
+            {% for error in reservationform.non_field_errors %}
+              {{ error }}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+  <!--   Date    -->
+
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <div class="row">
+        <div class="col">
+              <div class="form-group" style="display: inline-block">
+                <!--  <label for=""></label>-->
+                <br>
+                  {% if reservationform.is_bound %}
+                    {% if reservationform.date.errors %}
+                    <div class="input-group datepicker">
+                      <span class="input-group-addon">
+                          <span><i class="fa fa-calendar"></i></span>
+                      </span>
+                      <input data-toggle="datepicker"   name="{{ reservationform.date.name }}" class="form-control"
+                                  {% if reservationform.date.value != None %}value="{{ reservationform.date.value|stringformat:'s' }}"{% endif %}
+                                  required />
+
+                    </div>
+                      <!--{% render_field reservationform.date class="form-control is-invalid" %}-->
+                      {% for error in reservationform.date.errors %}
+                        <div class="invalid-feedback">
+                          {{ error }}
+                        </div>
+                      {% endfor %}
+                    {% else %}
+                    <div class="input-group datepicker">
+                      <span class="input-group-addon">
+                          <span><i class="fa fa-calendar"></i></span>
+                      </span>
+                      <input data-toggle="datepicker"   name="{{ reservationform.date.name }}" class="form-control"
+                                  {% if reservationform.date.value != None %}value="{{ reservationform.date.value|stringformat:'s' }}"{% endif %}
+                                  required />
+
+                    </div>
+                    <!--  {% render_field reservationform.date class="form-control is-valid" %}-->
+                    {% endif %}
+                  {% else %}
+                  <div class="input-group datepicker">
+                    <span class="input-group-addon">
+                        <span><i class="fa fa-calendar"></i></span>
+                    </span>
+                    <input data-toggle="datepicker"   name="{{ reservationform.date.name }}" class="form-control"
+                                {% if reservationform.date.value != None %}value="{{ reservationform.date.value|stringformat:'s' }}"{% endif %}
+                                required />
+
+                  </div>
+                  <!--  {% render_field reservationform.date class="form-control" %}-->
+                  {% endif %}
+                  {% if reservationform.date.help_text %}
+                    <small class="form-text text-muted">{{ reservationform.date.help_text }}</small>
+                  {% endif %}
+              </div>
+        </div>
+
+        <div class="col">
+          <!--   startTime    -->
+          <div class="form-group" style="display: inline-block">
+                      <label for=""></label>
+                    <br>
+                      {% if reservationform.is_bound %}
+                        {% if reservationform.startTime.errors %}
+                        <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                          <span class="input-group-prepend">
+                              <span class="glyphicon glyphicon-time"><i class="fa fa-clock-o"></i></span>
+                          </span>
+                            <input type="text" class="form-control" name="{{ reservationform.startTime.name }}"
+                                        {% if reservationform.startTime.value != None %}value="{{ reservationform.startTime.value|stringformat:'s' }}"{% endif %}
+                                        required>
+                        </div>
+
+
+                          <!--{% render_field reservationform.date class="form-control is-invalid" %}-->
+                          {% for error in reservationform.startTime.errors %}
+                            <div class="invalid-feedback">
+                              {{ error }}
+                            </div>
+                          {% endfor %}
+                        {% else %}
+                        <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                          <span class="input-group-prepend">
+                              <span class="glyphicon glyphicon-time"><i class="fa fa-clock-o"></i></span>
+                          </span>
+                            <input type="text" class="form-control" name="{{ reservationform.startTime.name }}"
+                                        {% if reservationform.startTime.value != None %}value="{{ reservationform.startTime.value|stringformat:'s' }}"{% endif %}
+                                        required>
+                        </div>
+                        <!--  {% render_field reservationform.date class="form-control is-valid" %}-->
+                        {% endif %}
+                      {% else %}
+                  <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                        <span class="input-group-prepend">
+                            <span class="glyphicon glyphicon-time"><i class="fa fa-clock-o"></i></span>
+                        </span>
+                          <input type="text" class="form-control" name="{{ reservationform.startTime.name }}"
+                                      {% if reservationform.startTime.value != None %}value="{{ reservationform.startTime.value|stringformat:'s' }}"{% endif %}
+                                      required>
+                      </div>
+                      <!--  {% render_field reservationform.date class="form-control" %}-->
+                      {% endif %}
+
+                      {% if reservationform.startTime.help_text %}
+                        <small class="form-text text-muted">{{ reservationform.startTime.help_text }}</small>
+                      {% endif %}
+                        </div>
+        </div>
+
+   </li>
+  <!--  Duration    -->
+  <li class="list-group-item">
+    <div class="row">
+        <div class="col">
+      <div class="form-group " style="display: inline-block">
+          <label for="">Duration (min)</label>
+          {% if reservationform.is_bound %}
+            {% if reservationform.duration.errors %}
+              {% render_field reservationform.duration class="form-control is-invalid" %}
+              {% for error in reservationform.duration.errors %}
+                <div class="invalid-feedback">
+                  {{ error }}
+                </div>
+              {% endfor %}
+            {% else %}
+              {% render_field reservationform.duration class="form-control is-valid" %}
+            {% endif %}
+          {% else %}
+            {% render_field reservationform.duration class="form-control" %}
+          {% endif %}
+
+          {% if reservationform.duration.help_text %}
+            <small class="form-text text-muted">{{ reservationform.duration.help_text }}</small>
+          {% endif %}
+      </div>
+</div>
+        <div class="col">
+    <!-- Extra time -->
+            <div class="form-group" style="display: inline-block">
+    <label for="">Extra Time (hrs)</label>
+
+
+    {% if reservationform.is_bound %}
+      {% if reservationform.extraTime.errors %}
+        {% render_field reservationform.extraTime class="form-control is-invalid" %}
+        {% for error in reservationform.extraTime.errors %}
+          <div class="invalid-feedback">
+            {{ error }}
+          </div>
+        {% endfor %}
+      {% else %}
+        {% render_field reservationform.extraTime class="form-control is-valid" %}
+      {% endif %}
+    {% else %}
+      {% render_field reservationform.extraTime class="form-control" %}
+    {% endif %}
+
+    {% if reservationform.extraTime.help_text %}
+      <small class="form-text text-muted">{{ reservationform.extraTime.help_text }}</small>
+    {% endif %}
+   </div>
+</div>
+    </div>
+  </li>
+  </ul>
+<!--  Room Type    -->
+<div class="form-group" hidden>
+  <input type="text" name="{{ reservationform.typeOf.name }}"
+              {% if reservationform.startTime.value != None %}value="Small meeting room"{% endif %}
+              required/>
+</div>
+        <button type="submit" class="btn btn-primary">Reserve</button>
+
+      </form>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <img class="card-img-top" src="{% static 'images/rooms/trainingRoom.jpg' %}" alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title">Big meeting room</h4>
+      <p class="card-text">This room is equiped with feature1 and feature1 added to feature1</p>
+      <form method="POST" novalidate>
+        {% csrf_token %}
+
+        {% for hidden_field in reservationform.hidden_fields %}
+          {{ hidden_field }}
+        {% endfor %}
+        {% if reservationform.non_field_errors %}
+          <div class="alert alert-danger" role="alert">
+            {% for error in reservationform.non_field_errors %}
+              {{ error }}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+  <!--   Date    -->
+
+  <ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <div class="row">
+        <div class="col">
+            <div class="form-group" style="display: inline-block">
+    <!--  <label for=""></label>-->
+    <br>
+      {% if reservationform.is_bound %}
+        {% if reservationform.date.errors %}
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+
+          <input data-toggle="datepicker"   name="{{ reservationform.date.name }}" class="form-control"
+                      {% if reservationform.date.value != None %}value="{{ reservationform.date.value|stringformat:'s' }}"{% endif %}
+                      required />
+
+        </div>
+          <!--{% render_field reservationform.date class="form-control is-invalid" %}-->
+          {% for error in reservationform.date.errors %}
+            <div class="invalid-feedback">
+              {{ error }}
+            </div>
+          {% endfor %}
+        {% else %}
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+
+          <input data-toggle="datepicker"   name="{{ reservationform.date.name }}" class="form-control"
+                      {% if reservationform.date.value != None %}value="{{ reservationform.date.value|stringformat:'s' }}"{% endif %}
+                      required />
+
+        </div>
+        <!--  {% render_field reservationform.date class="form-control is-valid" %}-->
+        {% endif %}
+      {% else %}
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+
+        <input data-toggle="datepicker"   name="{{ reservationform.date.name }}" class="form-control"
+                    {% if reservationform.date.value != None %}value="{{ reservationform.date.value|stringformat:'s' }}"{% endif %}
+                    required />
+
+      </div>
+      <!--  {% render_field reservationform.date class="form-control" %}-->
+      {% endif %}
+      {% if reservationform.date.help_text %}
+        <small class="form-text text-muted">{{ reservationform.date.help_text }}</small>
+      {% endif %}
+  </div>
+        </div>
+
+        <div class="col">
+  <!--   startTime    -->
+  <div class="form-group" style="display: inline-block">
+              <label for=""></label>
+            <br>
+              {% if reservationform.is_bound %}
+                {% if reservationform.startTime.errors %}
+                <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                  <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+
+                    <input type="text" class="form-control" name="{{ reservationform.startTime.name }}"
+                                {% if reservationform.startTime.value != None %}value="{{ reservationform.startTime.value|stringformat:'s' }}"{% endif %}
+                                required>
+                </div>
+
+
+                  <!--{% render_field reservationform.date class="form-control is-invalid" %}-->
+                  {% for error in reservationform.startTime.errors %}
+                    <div class="invalid-feedback">
+                      {{ error }}
+                    </div>
+                  {% endfor %}
+                {% else %}
+                <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                      <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+
+                    <input type="text" class="form-control" name="{{ reservationform.startTime.name }}"
+                                {% if reservationform.startTime.value != None %}value="{{ reservationform.startTime.value|stringformat:'s' }}"{% endif %}
+                                required>
+                </div>
+                <!--  {% render_field reservationform.date class="form-control is-valid" %}-->
+                {% endif %}
+              {% else %}
+          <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-time"><i class="fa fa-clock-o"></i></span>
+                  </div>
+
+                  <input type="text" class="form-control" name="{{ reservationform.startTime.name }}"
+                              {% if reservationform.startTime.value != None %}value="{{ reservationform.startTime.value|stringformat:'s' }}"{% endif %}
+                              required>
+              </div>
+              <!--  {% render_field reservationform.date class="form-control" %}-->
+              {% endif %}
+
+              {% if reservationform.startTime.help_text %}
+                <small class="form-text text-muted">{{ reservationform.startTime.help_text }}</small>
+              {% endif %}
+</div>
+        </div>
+
+    </li>
+  <!--  Duration    -->
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col">
+      <div class="form-group " style="display: inline-block">
+          <label for="">Duration (min)</label>
+          {% if reservationform.is_bound %}
+            {% if reservationform.duration.errors %}
+              {% render_field reservationform.duration class="form-control is-invalid" %}
+              {% for error in reservationform.duration.errors %}
+                <div class="invalid-feedback">
+                  {{ error }}
+                </div>
+              {% endfor %}
+            {% else %}
+              {% render_field reservationform.duration class="form-control is-valid" %}
+            {% endif %}
+          {% else %}
+            {% render_field reservationform.duration class="form-control" %}
+          {% endif %}
+
+          {% if reservationform.duration.help_text %}
+            <small class="form-text text-muted">{{ reservationform.duration.help_text }}</small>
+          {% endif %}
+      </div>
+    </div>
+
+      <div class="col">
+    <!-- Extra time -->
+  <div class="form-group row " style="display: inline-block">
+    <label for="">Extra Time (hrs)</label>
+
+
+    {% if reservationform.is_bound %}
+      {% if reservationform.extraTime.errors %}
+        {% render_field reservationform.extraTime class="form-control is-invalid" %}
+        {% for error in reservationform.extraTime.errors %}
+          <div class="invalid-feedback">
+            {{ error }}
+          </div>
+        {% endfor %}
+      {% else %}
+        {% render_field reservationform.extraTime class="form-control is-valid" %}
+      {% endif %}
+    {% else %}
+      {% render_field reservationform.extraTime class="form-control" %}
+    {% endif %}
+
+    {% if reservationform.extraTime.help_text %}
+      <small class="form-text text-muted">{{ reservationform.extraTime.help_text }}</small>
+    {% endif %}
+  </div>
+</div>
+    </div>
+  </li>
+  </ul>
+  <!--  Room Type    -->
+<div class="form-group" hidden>
+  <input type="text" name="{{ reservationform.typeOf.name }}"
+              {% if reservationform.startTime.value != None %}value="Big meeting room"{% endif %}
+              required/>
+</div>
+        <button type="submit" class="btn btn-primary">Reserve</button>
+
+      </form>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% block more_js %}
+<script type="text/javascript" src="{% static 'clockPicker/assets/js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'clockPicker/assets/js/bootstrap.js' %}"></script>
+<script type="text/javascript" src="{% static 'clockPicker/assets/js/highlight.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'clockPicker/assets/js/html5shiv.js' %}"></script>
+<script type="text/javascript" src="{% static 'clockPicker/assets/js/respond.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'clockPicker/src/clockpicker.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'datePicker/js/datepicker.js' %}"></script>
+
+
+<script type="text/javascript">
+  $('[data-toggle="datepicker"]').datepicker({
+
+    startDate: Date.now()
+  });
+</script>
+
+
+{% endblock %}
+
+
+
+<script type="text/javascript">
+$('.clockpicker').clockpicker({
+
+  placement: 'bottom',
+    align: 'right',
+    autoclose: true,
+    'default': '20:48'
+});
+</script>
+
+
+
+    <!--  <form  method="POST">
+
+        {{ reservationform.as_p }}
+
+        {% csrf_token %}
+        <input type="submit" class="btn btn-primary" name="" value="Submit">
+      </form>-->
+
+
+
+{% endblock %}

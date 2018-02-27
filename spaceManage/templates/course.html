@@ -1,0 +1,18 @@
+{% extends 'base2.html' %}
+
+{% block content_block %}
+
+  <div class="container-fluid">
+    <h4>{{ course.title }}</h4>
+<br><br>
+    <iframe width="840" height="630"
+    src="{{ cont.videoURL}}">
+    </iframe>
+    <br><br>
+
+    {{ cont.textContent }}
+  </div>
+
+
+
+{% endblock %}
