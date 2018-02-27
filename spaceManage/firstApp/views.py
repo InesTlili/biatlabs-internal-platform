@@ -27,9 +27,6 @@ from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 
 
-import plotly.plotly as py
-import plotly.figure_factory as ff
-import plotly
 # Create your views here.
 
 def try2(request):
@@ -39,30 +36,6 @@ def try2(request):
 
 
 def dashplot(request):
-    rs=Reservation.objects.order_by('date','startTime').values()
-    print(rs)
-    df=[]
-    for r in rs:
-        us = User.objects.get(id=r['user_id'])
-        if r['typeOf']=='Big meeting room':
-            resso='big'
-        if r['typeOf']=='Small meeting room':
-            resso='small'
-        if r['typeOf']=='Training Room':
-            resso='training'
-
-        df.append(dict(Task=resso,Start=str(r['date'])+str(' ')+str(r['startTime']), Finish=str(r['date'])+str(' ')+str(r['endTime']), Resource=us.username,))
-
-    colors = dict(big = 'rgb(46, 137, 205)',
-                  small = 'rgb(114, 44, 121)',
-                  training = 'rgb(198, 47, 105)',
-                  Brain = 'rgb(58, 149, 136)',
-                  Rest = 'rgb(107, 127, 135)')
-
-    fig = ff.create_gantt(df, index_col='Resource', title='Daily Schedule', group_tasks=True,
-                          show_colorbar=True,showgrid_x=True, showgrid_y=True )
-                          #bar_width=0.8, showgrid_x=True, showgrid_y=True
-    plotly.offline.plot(fig, filename='gantt-hours-minutes')
     return render(request,'dashplot.html')
 
 def getcourse(request, course_id=None):
