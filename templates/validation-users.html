@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+{%  load staticfiles %}
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+{% block log_block %}
+
+
+<table class="table">
+  <h4>Validate users</h4>
+  <thead>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">Startup</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for l in listeUsers %}
+    <tr>
+
+      <td>{{l.username}}</td>
+      <td>{{l.email}}</td>
+      <td>{{l.startup}}</td>
+      <td>{{l.is_active}}</td>
+      <td><a href={% url 'validateuser' l.id %} ><i class="fa fa-check"></i>
+      <td><a href={% url 'deleteuser' l.id %} ><i class="fa fa-trash"></i></a></td>
+
+</a></td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <title>B@Labs - Internal platform</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+  <!-- Bootstrap core CSS-->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+  <!-- Custom styles for this template-->
+  <link href="{% static 'css/sb-admin2.css' %}" rel="stylesheet">
+
+
+  {% block more_css  %}{% endblock %}
+
+
+  </head>
+  <body id="{% block id_block %}
+  {% endblock %}" class="{% block class_block %}
+  {% endblock %}">
+
+
+
+  <!-- Banner -->
+      <!--
+        To use a video as your background, set data-video to the name of your video without
+        its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
+        formats to work correctly.
+      -->
+                  {% if user.is_authenticated %}
+
+
+
+                        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+                          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                          </button>
+
+                          <div class="collapse navbar-collapse" id="navbarResponsive">
+                            <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                                <a class="nav-link" href="{% url 'home' %}">
+                                  <i class="fa fa-home"></i>
+                                  <span class="nav-link-text">Home</span>
+                                </a>
+                              </li>
+                              {% if user.is_staff %}
+                              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                                  <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#coll" data-parent="#exampleAccordion">
+                                    <i class="fa fa-star"></i>
+                                    <span class="nav-link-text">Admin</span>
+                                  </a>
+                                  <ul class="sidenav-second-level collapse" id="coll">
+                              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                                  <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+                                    <i class="fa fa-fw fa-wrench"></i>
+                                    <span class="nav-link-text">Internal Ops</span>
+                                  </a>
+                                  <ul class="sidenav-second-level collapse" id="collapseComponents">
+                                    <li>
+                                      <a href="{% url 'adminusers' %}">Validate Users</a>
+                                    </li>
+                                    <li>
+                                      <a href="{% url 'adminreservations' %}">Validate Reservations</a>
+                                    </li>
+                                    <li>
+                                      <a href="{% url 'adminlockers' %}">Validate Lockers</a>
+                                    </li>
+                                    <li>
+                                      <a href="{% url 'alllockers' %}">Attribute Lockers</a>
+                                    </li>
+                                    <li>
+                                      <a href="{% url 'makepresence' %}">Startups Presence</a>
+                                    </li>
+                                    <li>
+                                      <a href="{% url 'add/workshop' %}">Add workshop</a>
+                                    </li>
+                                  </ul>
+                              </li>
+                              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                                  <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseCo" data-parent="#exampleAccordion">
+                                    <i class="fa fa-eye"></i>
+                                    <span class="nav-link-text">Overview</span>
+                                  </a>
+                                  <ul class="sidenav-second-level collapse" id="collapseCo">
+                                    <li>
+                                      <a href="{% url 'seeusers' %}">All Users</a>
+                                    </li>
+                                    <li>
+                                      <a href="{% url 'seereservations' %}">All Reservations</a>
+                                    </li>
+                                    <li>
+                                      <a href="{% url 'seenotes' %}">All Notes</a>
+                                    </li>
+                                    <li>
+                                      <a href="{% url 'seelockers' %}">All Lockers</a>
+                                    </li>
+                                    <li>
+                                      <a href="{% url 'seevisitors' %}">All Visitors</a>
+                                    </li>
+                                    <li>
+                                      <a href="{% url 'workshops' %}">All Workshops</a>
+                                    </li>
+                                  </ul>
+                              </li>
+                              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="reservations">
+                                <a class="nav-link" href="{% url 'dashplot' %}">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                  <span class="nav-link-text">Reservations Timeline</span>
+                                </a>
+                              </li>
+
+                              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                                  <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapserrr" data-parent="#exampleAccordion">
+                                    <i class="fa fa-fw fa-dashboard"></i>
+                                    <span class="nav-link-text">Metrics</span>
+                                  </a>
+                                  <ul class="sidenav-second-level collapse" id="collapserrr">
+                                    <li>
+                                      <a href="{% url 'stats/presence' %}">Presence Rate</a>
+                                    </li>
+                                    <li>
+                                      <a href="{% url 'stats/reservation' %}">Reservations Rate</a>
+                                    </li>
+                                  </ul>
+                              </li>
+                            </ul>
+                          </li>
+                              {% endif %}
+                              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                                  <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#coll2" data-parent="#exampleAccordion">
+                                    <i class="fa fa-fw fa-wrench"></i>
+                                    <span class="nav-link-text">Startups - Booking</span>
+                                  </a>
+                                  <ul class="sidenav-second-level collapse" id="coll2">
+                              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="reservations">
+                                <a class="nav-link" href="{% url 'reservations' %}">
+                                  <i class="fa fa-fw fa-table"></i>
+                                  <span class="nav-link-text">My Reservations</span>
+                                </a>
+                              </li>
+                              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="reserve">
+                                <a class="nav-link" href="{% url 'reserve' %}">
+                                  <i class="fa fa-fw fa-file"></i>
+                                  <span class="nav-link-text">Reserve a Room</span>
+                                </a>
+                              </li>
+                              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="reserve">
+                                <a class="nav-link" href="{% url 'reserve/locker' %}">
+                                  <i class="fa fa-cubes"></i>
+                                  <span class="nav-link-text">Reserve a Locker</span>
+                                </a>
+                              </li>
+                              <li class="nav-item" data-toggle="tooltip" data-placement="right" title="notes">
+                                <a class="nav-link"  href="{% url 'notes' %}">
+                                  <i class="fa fa-comments-o"></i>
+                                 <span class="nav-link-text">Notes</span>
+                                </a>
+                              </li>
+                                  </ul>
+                                </li>
+
+                                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#coll3" data-parent="#exampleAccordion">
+                                      <i class="fa fa-list-ol"></i>
+                                      <span class="nav-link-text"> Program</span>
+                                    </a>
+                                    <ul class="sidenav-second-level collapse" id="coll3">
+                                      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="notes">
+                                        <a class="nav-link"  href="{% url 'oc' %}">
+                                          <i class="fa fa-pencil-square-o"></i>
+                                             <span class="nav-link-text">Online Curriculum</span>
+                                        </a>
+                                        <a class="nav-link"  href="{% url 'base2' %}">
+                                          <i class="fa fa-plus-square-o"></i>
+                                             <span class="nav-link-text">Extra Materials</span>
+                                        </a>
+                                        <a class="nav-link"  href="{% url 'startups' %}">
+                                          <i class="fa fa-plus-square-o"></i>
+                                             <span class="nav-link-text">Weekly Objectives</span>
+                                        </a>
+                                      </li>
+                                      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="workshops">
+                                <a class="nav-link" href="{% url 'myworkshops' %}">
+                                  <i class="fa fa-bookmark"></i>
+                                  <span class="nav-link-text">Upcoming Workshops</span>
+                                </a>
+                              </li>
+                                      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="events">
+                                          <a class="nav-link" href="#">
+                                            <i class="fa fa-exclamation"></i>
+                                            <span class="nav-link-text">Upcoming Events</span>
+                                          </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="mentoring">
+                                  <a class="nav-link"  href="#">
+                                    <i class="fa fa-graduation-cap"></i>
+                                   <span class="nav-link-text">Mentoring Schedule</span>
+                                  </a>
+                                </li>
+
+                            </ul>
+                            <ul class="navbar-nav sidenav-toggler">
+                              <li class="nav-item">
+                                <a class="nav-link text-center" id="sidenavToggler">
+                                  <i class="fa fa-fw fa-angle-left"></i>
+                                </a>
+                              </li>
+                            </ul>
+
+
+                            <ul class="navbar-nav ml-auto">
+                              <li class="nav-item">
+                                <a class="nav-link"  href="{% url 'profile' user.id %}">
+                                  <i class="fa fa-id-card-o"></i>Profile</a>
+                              </li>
+
+
+                              <li class="nav-item">
+                                <a class="nav-link" data-toggle="modal" data-target="#exampleModal" href="">
+                                  <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </nav>
+
+
+                        <div  class="content-wrapper">
+                          <div class="container-fluid" >
+                            <!-- Breadcrumbs-->
+                            {% block log_block %}
+                            {% endblock %}
+                            <!-- Blank div to give the page height to preview the fixed vs. static navbar-->
+                            <div style="height: 1000px;"></div>
+                          </div>
+                          <!-- /.container-fluid-->
+                          <!-- /.content-wrapper-->
+                          <footer class="sticky-footer">
+                            <div class="container">
+                              <div class="text-center">
+                                <small>Copyright © B@Labs</small>
+                              </div>
+                            </div>
+                          </footer>
+
+
+
+
+                          <!-- Scroll to Top Button-->
+                          <a class="scroll-to-top rounded" href="#page-top">
+                            <i class="fa fa-angle-up"></i>
+                          </a>
+
+
+
+                          <!-- Logout Modal-->
+                          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                                <div class="modal-footer">
+                                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                  <a class="btn btn-primary" href="{% url 'userlogout' %}">Logout</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+
+
+
+
+
+
+
+                  {% else %}
+{% block body_block %}
+{% endblock %}            <!--Home page-->
+                  {% endif %}
+
+
+
+
+
+
+
+
+
+                <!-- Bootstrap core JavaScript-->
+
+                <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+                <script src="{% static 'vendor/bootstrap/js/bootstrap.js' %}"></script>
+
+                <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+                <!-- Core plugin JavaScript-->
+                <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+                <!-- Custom scripts for all pages-->
+                <script src="{% static 'js/sb-admin.min.js' %}"></script>
+                <script>
+                $('#toggleNavPosition').click(function() {
+                  $('body').toggleClass('fixed-nav');
+                  $('nav').toggleClass('fixed-top static-top');
+                });
+
+                </script>
+                <!-- Toggle between dark and light navbar-->
+                <script>
+                $('#toggleNavColor').click(function() {
+                  $('nav').toggleClass('navbar-dark navbar-light');
+                  $('nav').toggleClass('bg-dark bg-light');
+                  $('body').toggleClass('bg-dark bg-light');
+                });
+
+                </script>
+                {% block more_js %}
+                {% endblock %}
+  </body>
+</html>

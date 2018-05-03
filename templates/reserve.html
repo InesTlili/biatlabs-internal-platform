@@ -1,0 +1,989 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block more_css %}
+<link rel="stylesheet" href="{% static 'clockPicker/src/clockpicker.css' %}">
+<link rel="stylesheet" href="{% static 'clockPicker/src/standalone.css' %}">
+<link rel="stylesheet" href="{% static 'datePicker/css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'datePicker/css/datepicker.css' %}">
+
+{% endblock %}
+
+
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+
+
+{% block log_block %}
+
+    {% load widget_tweaks %}
+
+
+
+
+<p class="card-text"><small class="text-muted">{{ message }}</small></p>
+<div class="card-deck">
+  <div class="card">
+    <img class="card-img-top" src="{% static 'images/rooms/bigMeetingRoom.jpg' %}" alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title text-center">Training Room</h4>
+      <p class="card-text text-center">This room is equiped with feature1 and feature1 added to feature1</p>
+      <svg width="100%" height="50">
+        <rect x="2%" y="2" width="2%" height="20" style="fill:{{ trcolor1 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="4%" y="2" width="2%" height="20" style="fill:{{ trcolor2 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="6%" y="2" width="2%" height="20" style="fill:{{ trcolor3 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="8%" y="2" width="2%" height="20" style="fill:{{ trcolor4 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="10%" y="2" width="2%" height="20" style="fill:{{ trcolor5 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="12%" y="2" width="2%" height="20" style="fill:{{ trcolor6 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="14%" y="2" width="2%" height="20" style="fill:{{ trcolor7 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="16%" y="2" width="2%" height="20" style="fill:{{ trcolor8 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="18%" y="2" width="2%" height="20" style="fill:{{ trcolor9 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="20%" y="2" width="2%" height="20" style="fill:{{ trcolor10 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="22%" y="2" width="2%" height="20" style="fill:{{ trcolor11 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="24%" y="2" width="2%" height="20" style="fill:{{ trcolor12 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="26%" y="2" width="2%" height="20" style="fill:{{ trcolor13 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="28%" y="2" width="2%" height="20" style="fill:{{ trcolor14 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="30%" y="2" width="2%" height="20" style="fill:{{ trcolor15 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="32%" y="2" width="2%" height="20" style="fill:{{ trcolor16 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="34%" y="2" width="2%" height="20" style="fill:{{ trcolor17 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="36%" y="2" width="2%" height="20" style="fill:{{ trcolor18 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="38%" y="2" width="2%" height="20" style="fill:{{ trcolor19 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="40%" y="2" width="2%" height="20" style="fill:{{ trcolor20 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="42%" y="2" width="2%" height="20" style="fill:{{ trcolor21 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="44%" y="2" width="2%" height="20" style="fill:{{ trcolor22 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="46%" y="2" width="2%" height="20" style="fill:{{ trcolor23 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="48%" y="2" width="2%" height="20" style="fill:{{ trcolor24 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="50%" y="2" width="2%" height="20" style="fill:{{ trcolor25 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="52%" y="2" width="2%" height="20" style="fill:{{ trcolor26 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="54%" y="2" width="2%" height="20" style="fill:{{ trcolor27 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="56%" y="2" width="2%" height="20" style="fill:{{ trcolor28 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="58%" y="2" width="2%" height="20" style="fill:{{ trcolor29 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="60%" y="2" width="2%" height="20" style="fill:{{ trcolor30 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="62%" y="2" width="2%" height="20" style="fill:{{ trcolor31 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="64%" y="2" width="2%" height="20" style="fill:{{ trcolor32 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="66%" y="2" width="2%" height="20" style="fill:{{ trcolor33 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="68%" y="2" width="2%" height="20" style="fill:{{ trcolor34 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="70%" y="2" width="2%" height="20" style="fill:{{ trcolor35 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="72%" y="2" width="2%" height="20" style="fill:{{ trcolor36 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="74%" y="2" width="2%" height="20" style="fill:{{ trcolor37 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="76%" y="2" width="2%" height="20" style="fill:{{ trcolor38 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="78%" y="2" width="2%" height="20" style="fill:{{ trcolor39 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="80%" y="2" width="2%" height="20" style="fill:{{ trcolor40 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="82%" y="2" width="2%" height="20" style="fill:{{ trcolor41 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="84%" y="2" width="2%" height="20" style="fill:{{ trcolor42 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="86%" y="2" width="2%" height="20" style="fill:{{ trcolor43 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="88%" y="2" width="2%" height="20" style="fill:{{ trcolor44 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="90%" y="2" width="2%" height="20" style="fill:{{ trcolor45 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="92%" y="2" width="2%" height="20" style="fill:{{ trcolor46 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="94%" y="2" width="2%" height="20" style="fill:{{ trcolor47 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="96%" y="2" width="2%" height="20" style="fill:{{ trcolor48 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+
+        <text x="0" y="60" fill="black"  style="font-size:7px;" transform="rotate(90 20,45)">00:00</text>
+        <!--<text x="0" y="54" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">00:30</text>-->
+        <text x="0" y="48" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">01:00</text>
+        <!--<text x="0" y="47" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">01:30</text>-->
+        <text x="0" y="34" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">02:00</text>
+        <!--<text x="0" y="35" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">02:30</text>-->
+        <text x="0" y="21" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">03:00</text>
+        <!--<text x="0" y="23" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">03:30</text>-->
+        <text x="0" y="8" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">04:00</text>
+        <!--<text x="0" y="11" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">04:30</text>-->
+        <text x="0" y="-6" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">05:00</text>
+        <!--<text x="0" y="-1" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">05:30</text>-->
+        <text x="0" y="-19" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">06:00</text>
+        <!--<text x="0" y="-13" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">06:30</text>-->
+        <text x="0" y="-32" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">07:00</text>
+        <!--<text x="0" y="-25" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">07:30</text>-->
+        <text x="0" y="-47" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">08:00</text>
+        <!--<text x="0" y="-37" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">08:30</text>-->
+        <text x="0" y="-60" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">09:00</text>
+        <!--<text x="0" y="-49" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">09:30</text>-->
+        <text x="0" y="-73" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">10:00</text>
+        <!--<text x="0" y="-60" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">10:30</text>-->
+        <text x="0" y="-85" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">11:00</text>
+        <!--<text x="0" y="-72" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">11:30</text>-->
+        <text x="0" y="-99" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">12:00</text>
+        <!--<text x="0" y="-84" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">12:30</text>-->
+        <text x="0" y="-114" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">13:00</text>
+
+        <!--<text x="0" y="-96" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">13:30</text>-->
+        <text x="0" y="-127" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">14:00</text>
+        <!--<text x="0" y="-108" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">14:30</text>-->
+        <text x="0" y="-139" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">15:00</text>
+        <!--<text x="0" y="-120" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">15:30</text>-->
+        <text x="0" y="-153" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">16:00</text>
+        <!--<text x="0" y="-132" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">16:30</text>-->
+        <text x="0" y="-166" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">17:00</text>
+        <!--<text x="0" y="-144" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">17:30</text>-->
+        <text x="0" y="-180" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">18:00</text>
+        <!--<text x="0" y="-156" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">18:30</text>-->
+        <text x="0" y="-194" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">19:00</text>
+        <!--<text x="0" y="-168" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">19:30</text>-->
+        <text x="0" y="-207" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">20:00</text>
+        <!--<text x="0" y="-180" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">20:30</text>-->
+        <text x="0" y="-221" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">21:00</text>
+        <!--<text x="0" y="-192" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">21:30</text>-->
+        <text x="0" y="-233" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">22:00</text>
+        <!--<text x="0" y="-204" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">22:30</text>-->
+        <text x="0" y="-245" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">23:00</text>
+        <!--<text x="0" y="-216" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">23:30</text>-->
+        <text x="0" y="-258" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">00:00</text>
+      </svg>
+
+
+      <form method="POST" novalidate>
+        {% csrf_token %}
+
+        {% for hidden_field in reservationform.hidden_fields %}
+          {{ hidden_field }}
+        {% endfor %}
+        {% if reservationform.non_field_errors %}
+          <div class="alert alert-danger" role="alert">
+            {% for error in reservationform.non_field_errors %}
+              {{ error }}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+  <!--   Date    -->
+
+  <ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <div class="row">
+        <div class="col">
+            <div class="form-group" style="display: inline-block">
+    <!--  <label for=""></label>-->
+    <br>
+      {% if reservationform.is_bound %}
+        {% if reservationform.date.errors %}
+
+        <div class="input-group datepicker">
+          <span class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+          </span>
+          <input data-toggle="datepicker" type="text"   name="{{ reservationform.date.name }}" class="form-control"
+                      {% if reservationform.date.value != None %}value="{{ reservationform.date.value|stringformat:'s' }}"{% endif %}
+                      required />
+
+        </div>
+          <!--{% render_field reservationform.date class="form-control is-invalid" %}-->
+          {% for error in reservationform.date.errors %}
+            <div class="invalid-feedback">
+              {{ error }}
+            </div>
+          {% endfor %}
+        {% else %}
+        <div class="input-group datepicker">
+          <span class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+          </span>
+          <input data-toggle="datepicker" type="text"   name="{{ reservationform.date.name }}" class="form-control"
+                      {% if reservationform.date.value != None %}value="{{ reservationform.date.value|stringformat:'s' }}"{% endif %}
+                      required />
+
+        </div>
+
+        <!--  {% render_field reservationform.date class="form-control is-valid" %}-->
+        {% endif %}
+      {% else %}
+      <div class="input-group">
+        <span class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+        </span>
+        <input data-toggle="datepicker" type="text"  name="{{ reservationform.date.name }}" class="form-control"
+                    {% if reservationform.date.value != None %}value="{{ reservationform.date.value|stringformat:'s' }}"{% endif %}
+                    required />
+
+      </div>
+
+      <!--  {% render_field reservationform.date class="form-control" %}-->
+      {% endif %}
+      {% if reservationform.date.help_text %}
+        <small class="form-text text-muted">{{ reservationform.date.help_text }}</small>
+      {% endif %}
+  </div>
+        </div>
+
+        <div class="col">
+  <!--   startTime    -->
+  <div class="form-group" style="display: inline-block">
+              <label for=""></label>
+            <br>
+              {% if reservationform.is_bound %}
+                {% if reservationform.startTime.errors %}
+                <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"><i class="fa fa-clock-o"></i></span>
+                  </div>
+                    <input type="text" class="form-control" name="{{ reservationform.startTime.name }}"
+                                {% if reservationform.startTime.value != None %}value="{{ reservationform.startTime.value|stringformat:'s' }}"{% endif %}
+                                required>
+                </div>
+
+
+                  <!--{% render_field reservationform.date class="form-control is-invalid" %}-->
+                  {% for error in reservationform.startTime.errors %}
+                    <div class="invalid-feedback">
+                      {{ error }}
+                    </div>
+                  {% endfor %}
+                {% else %}
+                <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"><i class="fa fa-clock-o"></i></span>
+                  </div>
+                    <input type="text" class="form-control" name="{{ reservationform.startTime.name }}"
+                                {% if reservationform.startTime.value != None %}value="{{ reservationform.startTime.value|stringformat:'s' }}"{% endif %}
+                                required>
+                </div>
+                <!--  {% render_field reservationform.date class="form-control is-valid" %}-->
+                {% endif %}
+              {% else %}
+          <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-clock-o"></i></span>
+                </div>
+                  <input type="text" class="form-control" name="{{ reservationform.startTime.name }}"
+                              {% if reservationform.startTime.value != None %}value="{{ reservationform.startTime.value|stringformat:'s' }}"{% endif %}
+                              required>
+              </div>
+              <!--  {% render_field reservationform.date class="form-control" %}-->
+              {% endif %}
+
+              {% if reservationform.startTime.help_text %}
+                <small class="form-text text-muted">{{ reservationform.startTime.help_text }}</small>
+              {% endif %}
+</div>
+        </div>
+
+    </li>
+  <!--  Duration    -->
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col">
+      <div class="form-group " style="display: inline-block">
+          <label for="">Duration (min)</label>
+          {% if reservationform.is_bound %}
+            {% if reservationform.duration.errors %}
+              {% render_field reservationform.duration class="form-control is-invalid" %}
+              {% for error in reservationform.duration.errors %}
+                <div class="invalid-feedback">
+                  {{ error }}
+                </div>
+              {% endfor %}
+            {% else %}
+              {% render_field reservationform.duration class="form-control is-valid" %}
+            {% endif %}
+          {% else %}
+            {% render_field reservationform.duration class="form-control" %}
+          {% endif %}
+
+          {% if reservationform.duration.help_text %}
+            <small class="form-text text-muted">{{ reservationform.duration.help_text }}</small>
+          {% endif %}
+      </div>
+    </div>
+
+      <div class="col">
+    <!-- Extra time -->
+  <div class="form-group row " style="display: inline-block">
+    <label for="">Extra Time (hrs)</label>
+
+
+    {% if reservationform.is_bound %}
+      {% if reservationform.extraTime.errors %}
+        {% render_field reservationform.extraTime class="form-control is-invalid" %}
+        {% for error in reservationform.extraTime.errors %}
+          <div class="invalid-feedback">
+            {{ error }}
+          </div>
+        {% endfor %}
+      {% else %}
+        {% render_field reservationform.extraTime class="form-control is-valid" %}
+      {% endif %}
+    {% else %}
+      {% render_field reservationform.extraTime class="form-control" %}
+    {% endif %}
+
+    {% if reservationform.extraTime.help_text %}
+      <small class="form-text text-muted">{{ reservationform.extraTime.help_text }}</small>
+    {% endif %}
+  </div>
+</div>
+    </div>
+  </li>
+  </ul>
+  <!--  Room Type    -->
+<div class="form-group" hidden>
+    <input type="text" name="{{ reservationform.typeOf.name }}"
+              value="Training Room"
+              required/>
+</div>
+        <button type="submit" class="btn btn-primary">Reserve</button>
+
+      </form>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="card">
+    <img class="card-img-top" src="{% static 'images/rooms/smallMeetingRoom.jpg' %}" alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title text-center">Small Meeting Room</h4>
+      <p class="card-text text-center">This room is equiped with feature1 and feature2 added to feature3</p>
+      <svg width="100%" height="50">
+        <rect x="2%" y="2" width="2%" height="20" style="fill:{{ smrcolor1 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="4%" y="2" width="2%" height="20" style="fill:{{ smrcolor2 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="6%" y="2" width="2%" height="20" style="fill:{{ smrcolor3 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="8%" y="2" width="2%" height="20" style="fill:{{ smrcolor4 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="10%" y="2" width="2%" height="20" style="fill:{{ smrcolor5 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="12%" y="2" width="2%" height="20" style="fill:{{ smrcolor6 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="14%" y="2" width="2%" height="20" style="fill:{{ smrcolor7 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="16%" y="2" width="2%" height="20" style="fill:{{ smrcolor8 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="18%" y="2" width="2%" height="20" style="fill:{{ smrcolor9 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="20%" y="2" width="2%" height="20" style="fill:{{ smrcolor10 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="22%" y="2" width="2%" height="20" style="fill:{{ smrcolor11 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="24%" y="2" width="2%" height="20" style="fill:{{ smrcolor12 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="26%" y="2" width="2%" height="20" style="fill:{{ smrcolor13 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="28%" y="2" width="2%" height="20" style="fill:{{ smrcolor14 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="30%" y="2" width="2%" height="20" style="fill:{{ smrcolor15 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="32%" y="2" width="2%" height="20" style="fill:{{ smrcolor16 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="34%" y="2" width="2%" height="20" style="fill:{{ smrcolor17 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="36%" y="2" width="2%" height="20" style="fill:{{ smrcolor18 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="38%" y="2" width="2%" height="20" style="fill:{{ smrcolor19 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="40%" y="2" width="2%" height="20" style="fill:{{ smrcolor20 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="42%" y="2" width="2%" height="20" style="fill:{{ smrcolor21 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="44%" y="2" width="2%" height="20" style="fill:{{ smrcolor22 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="46%" y="2" width="2%" height="20" style="fill:{{ smrcolor23 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="48%" y="2" width="2%" height="20" style="fill:{{ smrcolor24 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="50%" y="2" width="2%" height="20" style="fill:{{ smrcolor25 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="52%" y="2" width="2%" height="20" style="fill:{{ smrcolor26 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="54%" y="2" width="2%" height="20" style="fill:{{ smrcolor27 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="56%" y="2" width="2%" height="20" style="fill:{{ smrcolor28 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="58%" y="2" width="2%" height="20" style="fill:{{ smrcolor29 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="60%" y="2" width="2%" height="20" style="fill:{{ smrcolor30 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="62%" y="2" width="2%" height="20" style="fill:{{ smrcolor31 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="64%" y="2" width="2%" height="20" style="fill:{{ smrcolor32 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="66%" y="2" width="2%" height="20" style="fill:{{ smrcolor33 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="68%" y="2" width="2%" height="20" style="fill:{{ smrcolor34 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="70%" y="2" width="2%" height="20" style="fill:{{ smrcolor35 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="72%" y="2" width="2%" height="20" style="fill:{{ smrcolor36 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="74%" y="2" width="2%" height="20" style="fill:{{ smrcolor37 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="76%" y="2" width="2%" height="20" style="fill:{{ smrcolor38 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="78%" y="2" width="2%" height="20" style="fill:{{ smrcolor39 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="80%" y="2" width="2%" height="20" style="fill:{{ smrcolor40 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="82%" y="2" width="2%" height="20" style="fill:{{ smrcolor41 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="84%" y="2" width="2%" height="20" style="fill:{{ smrcolor42 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="86%" y="2" width="2%" height="20" style="fill:{{ smrcolor43 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="88%" y="2" width="2%" height="20" style="fill:{{ smrcolor44 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="90%" y="2" width="2%" height="20" style="fill:{{ smrcolor45 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="92%" y="2" width="2%" height="20" style="fill:{{ smrcolor46 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="94%" y="2" width="2%" height="20" style="fill:{{ smrcolor47 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="96%" y="2" width="2%" height="20" style="fill:{{ smrcolor48 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+
+        <text x="0" y="60" fill="black"  style="font-size:7px;" transform="rotate(90 20,45)">00:00</text>
+        <!--<text x="0" y="54" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">00:30</text>-->
+        <text x="0" y="48" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">01:00</text>
+        <!--<text x="0" y="47" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">01:30</text>-->
+        <text x="0" y="34" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">02:00</text>
+        <!--<text x="0" y="35" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">02:30</text>-->
+        <text x="0" y="21" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">03:00</text>
+        <!--<text x="0" y="23" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">03:30</text>-->
+        <text x="0" y="8" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">04:00</text>
+        <!--<text x="0" y="11" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">04:30</text>-->
+        <text x="0" y="-6" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">05:00</text>
+        <!--<text x="0" y="-1" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">05:30</text>-->
+        <text x="0" y="-19" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">06:00</text>
+        <!--<text x="0" y="-13" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">06:30</text>-->
+        <text x="0" y="-32" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">07:00</text>
+        <!--<text x="0" y="-25" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">07:30</text>-->
+        <text x="0" y="-47" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">08:00</text>
+        <!--<text x="0" y="-37" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">08:30</text>-->
+        <text x="0" y="-60" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">09:00</text>
+        <!--<text x="0" y="-49" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">09:30</text>-->
+        <text x="0" y="-73" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">10:00</text>
+        <!--<text x="0" y="-60" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">10:30</text>-->
+        <text x="0" y="-85" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">11:00</text>
+        <!--<text x="0" y="-72" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">11:30</text>-->
+        <text x="0" y="-99" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">12:00</text>
+        <!--<text x="0" y="-84" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">12:30</text>-->
+        <text x="0" y="-114" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">13:00</text>
+
+        <!--<text x="0" y="-96" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">13:30</text>-->
+        <text x="0" y="-127" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">14:00</text>
+        <!--<text x="0" y="-108" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">14:30</text>-->
+        <text x="0" y="-139" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">15:00</text>
+        <!--<text x="0" y="-120" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">15:30</text>-->
+        <text x="0" y="-153" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">16:00</text>
+        <!--<text x="0" y="-132" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">16:30</text>-->
+        <text x="0" y="-166" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">17:00</text>
+        <!--<text x="0" y="-144" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">17:30</text>-->
+        <text x="0" y="-180" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">18:00</text>
+        <!--<text x="0" y="-156" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">18:30</text>-->
+        <text x="0" y="-194" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">19:00</text>
+        <!--<text x="0" y="-168" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">19:30</text>-->
+        <text x="0" y="-207" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">20:00</text>
+        <!--<text x="0" y="-180" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">20:30</text>-->
+        <text x="0" y="-221" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">21:00</text>
+        <!--<text x="0" y="-192" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">21:30</text>-->
+        <text x="0" y="-233" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">22:00</text>
+        <!--<text x="0" y="-204" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">22:30</text>-->
+        <text x="0" y="-245" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">23:00</text>
+        <!--<text x="0" y="-216" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">23:30</text>-->
+        <text x="0" y="-258" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">00:00</text>
+      </svg>
+  <form method="POST" novalidate>
+        {% csrf_token %}
+
+        {% for hidden_field in reservationform.hidden_fields %}
+          {{ hidden_field }}
+        {% endfor %}
+        {% if reservationform.non_field_errors %}
+          <div class="alert alert-danger" role="alert">
+            {% for error in reservationform.non_field_errors %}
+              {{ error }}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+  <!--   Date    -->
+
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <div class="row">
+        <div class="col">
+              <div class="form-group" style="display: inline-block">
+                <!--  <label for=""></label>-->
+                <br>
+                  {% if reservationform.is_bound %}
+                    {% if reservationform.date.errors %}
+                    <div class="input-group datepicker">
+                      <div class="input-group-prepend">
+                          <span><i class="fa fa-calendar"></i></span>
+                      </div>
+                      <input data-toggle="datepicker"   name="{{ reservationform.date.name }}" class="form-control"
+                                  {% if reservationform.date.value != None %}value="{{ reservationform.date.value|stringformat:'s' }}"{% endif %}
+                                  required />
+
+                    </div>
+                      <!--{% render_field reservationform.date class="form-control is-invalid" %}-->
+                      {% for error in reservationform.date.errors %}
+                        <div class="invalid-feedback">
+                          {{ error }}
+                        </div>
+                      {% endfor %}
+                    {% else %}
+                    <div class="input-group datepicker">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+                      </div>
+                      <input data-toggle="datepicker"   name="{{ reservationform.date.name }}" class="form-control"
+                                  {% if reservationform.date.value != None %}value="{{ reservationform.date.value|stringformat:'s' }}"{% endif %}
+                                  required />
+
+                    </div>
+                    <!--  {% render_field reservationform.date class="form-control is-valid" %}-->
+                    {% endif %}
+                  {% else %}
+                  <div class="input-group datepicker">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+                    </div>
+                    <input data-toggle="datepicker"   name="{{ reservationform.date.name }}" class="form-control"
+                                {% if reservationform.date.value != None %}value="{{ reservationform.date.value|stringformat:'s' }}"{% endif %}
+                                required />
+
+                  </div>
+                  <!--  {% render_field reservationform.date class="form-control" %}-->
+                  {% endif %}
+                  {% if reservationform.date.help_text %}
+                    <small class="form-text text-muted">{{ reservationform.date.help_text }}</small>
+                  {% endif %}
+              </div>
+        </div>
+
+        <div class="col">
+          <!--   startTime    -->
+          <div class="form-group" style="display: inline-block">
+                      <label for=""></label>
+                    <br>
+                      {% if reservationform.is_bound %}
+                        {% if reservationform.startTime.errors %}
+                        <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                          <div class="input-group-prepend">
+                              <span class="glyphicon glyphicon-time"><i class="fa fa-clock-o"></i></span>
+                          </div>
+                            <input type="text" class="form-control" name="{{ reservationform.startTime.name }}"
+                                        {% if reservationform.startTime.value != None %}value="{{ reservationform.startTime.value|stringformat:'s' }}"{% endif %}
+                                        required>
+                        </div>
+
+
+                          <!--{% render_field reservationform.date class="form-control is-invalid" %}-->
+                          {% for error in reservationform.startTime.errors %}
+                            <div class="invalid-feedback">
+                              {{ error }}
+                            </div>
+                          {% endfor %}
+                        {% else %}
+                        <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1"><i class="fa fa-clock-o"></i></span>
+                          </div>
+                            <input type="text" class="form-control" name="{{ reservationform.startTime.name }}"
+                                        {% if reservationform.startTime.value != None %}value="{{ reservationform.startTime.value|stringformat:'s' }}"{% endif %}
+                                        required>
+                        </div>
+                        <!--  {% render_field reservationform.date class="form-control is-valid" %}-->
+                        {% endif %}
+                      {% else %}
+                  <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-clock-o"></i></span>
+                        </div>
+                          <input type="text" class="form-control" name="{{ reservationform.startTime.name }}"
+                                      {% if reservationform.startTime.value != None %}value="{{ reservationform.startTime.value|stringformat:'s' }}"{% endif %}
+                                      required>
+                      </div>
+                      <!--  {% render_field reservationform.date class="form-control" %}-->
+                      {% endif %}
+
+                      {% if reservationform.startTime.help_text %}
+                        <small class="form-text text-muted">{{ reservationform.startTime.help_text }}</small>
+                      {% endif %}
+                        </div>
+        </div>
+
+   </li>
+  <!--  Duration    -->
+  <li class="list-group-item">
+    <div class="row">
+        <div class="col">
+      <div class="form-group " style="display: inline-block">
+          <label for="">Duration (min)</label>
+          {% if reservationform.is_bound %}
+            {% if reservationform.duration.errors %}
+              {% render_field reservationform.duration class="form-control is-invalid" %}
+              {% for error in reservationform.duration.errors %}
+                <div class="invalid-feedback">
+                  {{ error }}
+                </div>
+              {% endfor %}
+            {% else %}
+              {% render_field reservationform.duration class="form-control is-valid" %}
+            {% endif %}
+          {% else %}
+            {% render_field reservationform.duration class="form-control" %}
+          {% endif %}
+
+          {% if reservationform.duration.help_text %}
+            <small class="form-text text-muted">{{ reservationform.duration.help_text }}</small>
+          {% endif %}
+      </div>
+</div>
+        <div class="col">
+    <!-- Extra time -->
+            <div class="form-group" style="display: inline-block">
+    <label for="">Extra Time (hrs)</label>
+
+
+    {% if reservationform.is_bound %}
+      {% if reservationform.extraTime.errors %}
+        {% render_field reservationform.extraTime class="form-control is-invalid" %}
+        {% for error in reservationform.extraTime.errors %}
+          <div class="invalid-feedback">
+            {{ error }}
+          </div>
+        {% endfor %}
+      {% else %}
+        {% render_field reservationform.extraTime class="form-control is-valid" %}
+      {% endif %}
+    {% else %}
+      {% render_field reservationform.extraTime class="form-control" %}
+    {% endif %}
+
+    {% if reservationform.extraTime.help_text %}
+      <small class="form-text text-muted">{{ reservationform.extraTime.help_text }}</small>
+    {% endif %}
+   </div>
+</div>
+    </div>
+  </li>
+  </ul>
+<!--  Room Type    -->
+<div class="form-group" hidden>
+  <input type="text" name="{{ reservationform.typeOf.name }}"
+              {% if reservationform.startTime.value != None %}value="Small meeting room"{% endif %}
+              required/>
+</div>
+        <button type="submit" class="btn btn-primary">Reserve</button>
+
+      </form>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <img class="card-img-top" src="{% static 'images/rooms/trainingRoom.jpg' %}" alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title text-center">Big Meeting Room</h4>
+      <p class="card-text text-center">This room is equiped with feature1 and feature1 added to feature1</p>
+      <svg width="100%" height="50">
+        <rect x="2%" y="2" width="2%" height="20" style="fill:{{ bmrcolor1 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="4%" y="2" width="2%" height="20" style="fill:{{ bmrcolor2 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="6%" y="2" width="2%" height="20" style="fill:{{ bmrcolor3 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="8%" y="2" width="2%" height="20" style="fill:{{ bmrcolor4 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="10%" y="2" width="2%" height="20" style="fill:{{ bmrcolor5 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="12%" y="2" width="2%" height="20" style="fill:{{ bmrcolor6 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="14%" y="2" width="2%" height="20" style="fill:{{ bmrcolor7 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="16%" y="2" width="2%" height="20" style="fill:{{ bmrcolor8 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="18%" y="2" width="2%" height="20" style="fill:{{ bmrcolor9 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="20%" y="2" width="2%" height="20" style="fill:{{ bmrcolor10 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="22%" y="2" width="2%" height="20" style="fill:{{ bmrcolor11 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="24%" y="2" width="2%" height="20" style="fill:{{ bmrcolor12 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="26%" y="2" width="2%" height="20" style="fill:{{ bmrcolor13 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="28%" y="2" width="2%" height="20" style="fill:{{ bmrcolor14 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="30%" y="2" width="2%" height="20" style="fill:{{ bmrcolor15 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="32%" y="2" width="2%" height="20" style="fill:{{ bmrcolor16 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="34%" y="2" width="2%" height="20" style="fill:{{ bmrcolor17 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="36%" y="2" width="2%" height="20" style="fill:{{ bmrcolor18 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="38%" y="2" width="2%" height="20" style="fill:{{ bmrcolor19 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="40%" y="2" width="2%" height="20" style="fill:{{ bmrcolor20 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="42%" y="2" width="2%" height="20" style="fill:{{ bmrcolor21 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="44%" y="2" width="2%" height="20" style="fill:{{ bmrcolor22 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="46%" y="2" width="2%" height="20" style="fill:{{ bmrcolor23 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="48%" y="2" width="2%" height="20" style="fill:{{ bmrcolor24 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="50%" y="2" width="2%" height="20" style="fill:{{ bmrcolor25 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="52%" y="2" width="2%" height="20" style="fill:{{ bmrcolor26 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="54%" y="2" width="2%" height="20" style="fill:{{ bmrcolor27 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="56%" y="2" width="2%" height="20" style="fill:{{ bmrcolor28 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="58%" y="2" width="2%" height="20" style="fill:{{ bmrcolor29 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="60%" y="2" width="2%" height="20" style="fill:{{ bmrcolor30 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="62%" y="2" width="2%" height="20" style="fill:{{ bmrcolor31 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="64%" y="2" width="2%" height="20" style="fill:{{ bmrcolor32 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="66%" y="2" width="2%" height="20" style="fill:{{ bmrcolor33 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="68%" y="2" width="2%" height="20" style="fill:{{ bmrcolor34 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="70%" y="2" width="2%" height="20" style="fill:{{ bmrcolor35 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="72%" y="2" width="2%" height="20" style="fill:{{ bmrcolor36 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="74%" y="2" width="2%" height="20" style="fill:{{ bmrcolor37 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="76%" y="2" width="2%" height="20" style="fill:{{ bmrcolor38 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="78%" y="2" width="2%" height="20" style="fill:{{ bmrcolor39 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="80%" y="2" width="2%" height="20" style="fill:{{ bmrcolor40 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="82%" y="2" width="2%" height="20" style="fill:{{ bmrcolor41 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="84%" y="2" width="2%" height="20" style="fill:{{ bmrcolor42 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="86%" y="2" width="2%" height="20" style="fill:{{ bmrcolor43 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="88%" y="2" width="2%" height="20" style="fill:{{ bmrcolor44 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="90%" y="2" width="2%" height="20" style="fill:{{ bmrcolor45 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="92%" y="2" width="2%" height="20" style="fill:{{ bmrcolor46 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="94%" y="2" width="2%" height="20" style="fill:{{ bmrcolor47 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+        <rect x="96%" y="2" width="2%" height="20" style="fill:{{ bmrcolor48 }};stroke:pink;stroke-width:1;fill-opacity:0.6;stroke-opacity:0.9" />
+
+            <text x="0" y="60" fill="black"  style="font-size:7px;" transform="rotate(90 20,45)">00:00</text>
+            <!--<text x="0" y="54" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">00:30</text>-->
+            <text x="0" y="48" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">01:00</text>
+            <!--<text x="0" y="47" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">01:30</text>-->
+            <text x="0" y="34" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">02:00</text>
+            <!--<text x="0" y="35" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">02:30</text>-->
+            <text x="0" y="21" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">03:00</text>
+            <!--<text x="0" y="23" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">03:30</text>-->
+            <text x="0" y="8" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">04:00</text>
+            <!--<text x="0" y="11" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">04:30</text>-->
+            <text x="0" y="-6" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">05:00</text>
+            <!--<text x="0" y="-1" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">05:30</text>-->
+            <text x="0" y="-19" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">06:00</text>
+            <!--<text x="0" y="-13" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">06:30</text>-->
+            <text x="0" y="-32" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">07:00</text>
+            <!--<text x="0" y="-25" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">07:30</text>-->
+            <text x="0" y="-47" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">08:00</text>
+            <!--<text x="0" y="-37" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">08:30</text>-->
+            <text x="0" y="-60" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">09:00</text>
+            <!--<text x="0" y="-49" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">09:30</text>-->
+            <text x="0" y="-73" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">10:00</text>
+            <!--<text x="0" y="-60" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">10:30</text>-->
+            <text x="0" y="-85" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">11:00</text>
+            <!--<text x="0" y="-72" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">11:30</text>-->
+            <text x="0" y="-99" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">12:00</text>
+            <!--<text x="0" y="-84" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">12:30</text>-->
+            <text x="0" y="-114" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">13:00</text>
+
+            <!--<text x="0" y="-96" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">13:30</text>-->
+            <text x="0" y="-127" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">14:00</text>
+            <!--<text x="0" y="-108" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">14:30</text>-->
+            <text x="0" y="-139" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">15:00</text>
+            <!--<text x="0" y="-120" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">15:30</text>-->
+            <text x="0" y="-153" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">16:00</text>
+            <!--<text x="0" y="-132" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">16:30</text>-->
+            <text x="0" y="-166" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">17:00</text>
+            <!--<text x="0" y="-144" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">17:30</text>-->
+            <text x="0" y="-180" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">18:00</text>
+            <!--<text x="0" y="-156" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">18:30</text>-->
+            <text x="0" y="-194" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">19:00</text>
+            <!--<text x="0" y="-168" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">19:30</text>-->
+            <text x="0" y="-207" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">20:00</text>
+            <!--<text x="0" y="-180" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">20:30</text>-->
+            <text x="0" y="-221" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">21:00</text>
+            <!--<text x="0" y="-192" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">21:30</text>-->
+            <text x="0" y="-233" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">22:00</text>
+            <!--<text x="0" y="-204" fill="white"  style="font-size:7px;" transform="rotate(90 20,45)">22:30</text>-->
+            <text x="0" y="-245" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">23:00</text>
+            <!--<text x="0" y="-216" fill="white" style="font-size:7px;" transform="rotate(90 20,45)">23:30</text>-->
+            <text x="0" y="-258" fill="black" style="font-size:7px;" transform="rotate(90 20,45)">00:00</text>
+      </svg>
+      <form method="POST" novalidate>
+        {% csrf_token %}
+
+        {% for hidden_field in reservationform.hidden_fields %}
+          {{ hidden_field }}
+        {% endfor %}
+        {% if reservationform.non_field_errors %}
+          <div class="alert alert-danger" role="alert">
+            {% for error in reservationform.non_field_errors %}
+              {{ error }}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+  <!--   Date    -->
+
+  <ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <div class="row">
+        <div class="col">
+            <div class="form-group" style="display: inline-block">
+    <!--  <label for=""></label>-->
+    <br>
+      {% if reservationform.is_bound %}
+        {% if reservationform.date.errors %}
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+
+          </div>
+
+          <input data-toggle="datepicker"   name="{{ reservationform.date.name }}" class="form-control"
+                      {% if reservationform.date.value != None %}value="{{ reservationform.date.value|stringformat:'s' }}"{% endif %}
+                      required />
+
+        </div>
+          <!--{% render_field reservationform.date class="form-control is-invalid" %}-->
+          {% for error in reservationform.date.errors %}
+            <div class="invalid-feedback">
+              {{ error }}
+            </div>
+          {% endfor %}
+        {% else %}
+        <div class="input-group">
+          <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+        </div>
+          <input data-toggle="datepicker"   name="{{ reservationform.date.name }}" class="form-control"
+                      {% if reservationform.date.value != None %}value="{{ reservationform.date.value|stringformat:'s' }}"{% endif %}
+                      required />
+
+        </div>
+        <!--  {% render_field reservationform.date class="form-control is-valid" %}-->
+        {% endif %}
+      {% else %}
+      <div class="input-group">
+
+        <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+      </div>
+        <input data-toggle="datepicker"   name="{{ reservationform.date.name }}" class="form-control"
+                    {% if reservationform.date.value != None %}value="{{ reservationform.date.value|stringformat:'s' }}"{% endif %}
+                    required />
+
+      </div>
+      <!--  {% render_field reservationform.date class="form-control" %}-->
+      {% endif %}
+      {% if reservationform.date.help_text %}
+        <small class="form-text text-muted">{{ reservationform.date.help_text }}</small>
+      {% endif %}
+  </div>
+        </div>
+
+        <div class="col">
+  <!--   startTime    -->
+  <div class="form-group" style="display: inline-block">
+              <label for=""></label>
+            <br>
+              {% if reservationform.is_bound %}
+                {% if reservationform.startTime.errors %}
+                <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                  <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-clock-o"></i></span>
+                </div>
+                    <input type="text" class="form-control" name="{{ reservationform.startTime.name }}"
+                                {% if reservationform.startTime.value != None %}value="{{ reservationform.startTime.value|stringformat:'s' }}"{% endif %}
+                                required>
+                </div>
+
+
+                  <!--{% render_field reservationform.date class="form-control is-invalid" %}-->
+                  {% for error in reservationform.startTime.errors %}
+                    <div class="invalid-feedback">
+                      {{ error }}
+                    </div>
+                  {% endfor %}
+                {% else %}
+                <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-prepend1"><i class="fa fa-clock-o"></i></span>
+                  </div>
+                    <input type="text" class="form-control" name="{{ reservationform.startTime.name }}"
+                                {% if reservationform.startTime.value != None %}value="{{ reservationform.startTime.value|stringformat:'s' }}"{% endif %}
+                                required>
+                </div>
+                <!--  {% render_field reservationform.date class="form-control is-valid" %}-->
+                {% endif %}
+              {% else %}
+          <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-clock-o"></i></span>
+                  </div>
+
+                  <input type="text" class="form-control" name="{{ reservationform.startTime.name }}"
+                              {% if reservationform.startTime.value != None %}value="{{ reservationform.startTime.value|stringformat:'s' }}"{% endif %}
+                              required>
+              </div>
+              <!--  {% render_field reservationform.date class="form-control" %}-->
+              {% endif %}
+
+              {% if reservationform.startTime.help_text %}
+                <small class="form-text text-muted">{{ reservationform.startTime.help_text }}</small>
+              {% endif %}
+</div>
+        </div>
+
+    </li>
+  <!--  Duration    -->
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col">
+      <div class="form-group " style="display: inline-block">
+          <label for="">Duration (min)</label>
+          {% if reservationform.is_bound %}
+            {% if reservationform.duration.errors %}
+              {% render_field reservationform.duration class="form-control is-invalid" %}
+              {% for error in reservationform.duration.errors %}
+                <div class="invalid-feedback">
+                  {{ error }}
+                </div>
+              {% endfor %}
+            {% else %}
+              {% render_field reservationform.duration class="form-control is-valid" %}
+            {% endif %}
+          {% else %}
+            {% render_field reservationform.duration class="form-control" %}
+          {% endif %}
+
+          {% if reservationform.duration.help_text %}
+            <small class="form-text text-muted">{{ reservationform.duration.help_text }}</small>
+          {% endif %}
+      </div>
+    </div>
+
+      <div class="col">
+    <!-- Extra time -->
+  <div class="form-group row " style="display: inline-block">
+    <label for="">Extra Time (hrs)</label>
+
+
+    {% if reservationform.is_bound %}
+      {% if reservationform.extraTime.errors %}
+        {% render_field reservationform.extraTime class="form-control is-invalid" %}
+        {% for error in reservationform.extraTime.errors %}
+          <div class="invalid-feedback">
+            {{ error }}
+          </div>
+        {% endfor %}
+      {% else %}
+        {% render_field reservationform.extraTime class="form-control is-valid" %}
+      {% endif %}
+    {% else %}
+      {% render_field reservationform.extraTime class="form-control" %}
+    {% endif %}
+
+    {% if reservationform.extraTime.help_text %}
+      <small class="form-text text-muted">{{ reservationform.extraTime.help_text }}</small>
+    {% endif %}
+  </div>
+</div>
+    </div>
+  </li>
+  </ul>
+  <!--  Room Type    -->
+<div class="form-group" hidden>
+  <input type="text" name="{{ reservationform.typeOf.name }}"
+              {% if reservationform.startTime.value != None %}value="Big meeting room"{% endif %}
+              required/>
+</div>
+        <button type="submit" class="btn btn-primary">Reserve</button>
+
+      </form>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% block more_js %}
+<script type="text/javascript" src="{% static 'clockPicker/assets/js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'clockPicker/assets/js/bootstrap.js' %}"></script>
+<script type="text/javascript" src="{% static 'clockPicker/assets/js/highlight.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'clockPicker/assets/js/html5shiv.js' %}"></script>
+<script type="text/javascript" src="{% static 'clockPicker/assets/js/respond.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'clockPicker/src/clockpicker.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'datePicker/js/datepicker.js' %}"></script>
+
+
+<script type="text/javascript">
+  $('[data-toggle="datepicker"]').datepicker({
+
+    startDate: Date.now()
+  });
+</script>
+
+
+{% endblock %}
+
+
+
+<script type="text/javascript">
+$('.clockpicker').clockpicker({
+
+  placement: 'bottom',
+    align: 'right',
+    autoclose: true,
+    'default': '20:48'
+});
+</script>
+
+
+
+    <!--  <form  method="POST">
+
+        {{ reservationform.as_p }}
+
+        {% csrf_token %}
+        <input type="submit" class="btn btn-primary" name="" value="Submit">
+      </form>-->
+
+
+
+{% endblock %}

@@ -1,0 +1,44 @@
+
+{% extends 'base.html' %}
+{%  load staticfiles %}
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+{% block log_block %}
+
+
+<table class="table">
+  <h4>Daily Presence</h4>
+  <thead>
+    <tr>
+      <th scope="col">Startup</th>
+      <th scope="col">Number of present members</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for s in startups %}
+    <tr>
+      <th>{{s.name}}</th>
+      <form method="POST">
+        {% csrf_token %}
+      <td>
+        <input type="text" name='number'>
+        <input type="text" name='id' value="{{ s.id }}" hidden>
+      </td>
+      <td>
+        <button type="submit" name="button"><i class="fa fa-check"></i></button>
+       </td>
+     </form>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}

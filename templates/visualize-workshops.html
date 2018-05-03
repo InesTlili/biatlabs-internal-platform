@@ -1,0 +1,61 @@
+
+{% extends 'base.html' %}
+{%  load staticfiles %}
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+{% block log_block %}
+
+
+
+
+
+<table class="table">
+  <h4>All Workshops</h4>
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Theme</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col">Moderator</th>
+      <th scope="col" hidden>Delete</th>
+      <th scope="col" hidden>Is Done</th>
+      <th scope="col" hidden>Make Presence</th>
+
+
+
+
+
+
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for u in wks %}
+    <tr>
+      <th scope="row">{{u.title}}</th>
+      <td>{{u.theme}}</td>
+      <td>{{u.date}}</td>
+      <td>{{u.time}}</td>
+      <td>{{u.moderator}}</td>
+
+      <td><a href={% url 'deletewks' u.id %} ><i class="fa fa-trash"></i></a></td>
+      {% if u.isDone %}
+      <td>Done</td>
+      {% else %}
+      <td><a href={% url 'validatewks' u.id %} ><i class="fa fa-check"></i></a></td>
+      {% endif %}
+      <td><a href={% url 'presencewks' u.id %} ><i class="fa fa-angle-right"></i></a></td>
+
+</a></td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

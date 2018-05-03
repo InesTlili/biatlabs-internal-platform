@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+
+
+{% block log_block %}
+
+
+
+<form method="POST">
+  {% csrf_token %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Reference</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for l in lockers %}
+    <tr>
+      <td>
+        <input  name="locker" type="radio" class="" value="{{l.id}}">
+        {{l.Nearby}} - {{l.reference}}
+      </td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+<button type="submit" class="btn btn-primary" name="button">Send Locker Request</button>
+</form>
+<br>
+<hr>
+<h4>My Lockers</h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Reference</th>
+      <th>Admin Validation</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for l in mylockers %}
+    <tr>
+      <td>{{l.Nearby}} - {{l.reference}}</td>
+
+      <td>
+        {% if l.adminValid %}
+          <i class="fa fa-check"></i>
+        {% else %}
+          <i class="fa fa-times"></i>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+
+
+
+{% endblock %}

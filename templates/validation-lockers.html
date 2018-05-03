@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+{%  load staticfiles %}
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+{% block log_block %}
+
+
+<table class="table">
+  <h4>Validate Lockers</h4>
+  <thead>
+    <tr>
+      <th scope="col">User</th>
+      <th scope="col">Locker reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for l in lockers %}
+    <tr>
+      <th scope="row">{{l.user}}</th>
+      <td>{{l.Nearby}} - {{l.reference}}</td>
+
+      <td><a href={% url 'validatelockers' l.id %} ><i class="fa fa-check"></i>
+      <td><a href={% url 'deletelocker' l.id %} ><i class="fa fa-trash"></i></a></td>
+
+</a></td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,52 @@
+
+{% extends 'base.html' %}
+{%  load staticfiles %}
+{% block class_block %}
+bg-dark
+{% endblock %}
+{% block body_block %}
+
+<div class="container">
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Register an Account</div>
+      <div class="card-body">
+        {% load widget_tweaks %}
+
+        <form method="POST">
+          {% csrf_token %}
+
+          <div class="form-group">
+                <label for="exampleInputName">Username</label>
+                {% render_field Userform.username class="form-control" %}
+
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            {% render_field Userform.email class="form-control" %}
+
+          </div>
+          <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                {% render_field Userform.password class="form-control" %}
+
+          </div>
+          <div class="form-group">
+                <label for="exampleInputPassword1">startup</label>
+                {% render_field Profileform.startup class="form-control" %}
+
+          </div>
+          <div class="form-group">
+                <label for="">Profile Picture</label>
+                {% render_field Profileform.profilePic class="form-control" %}
+
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">Register</button>
+        </form>
+        <div class="text-center">
+          <a class="d-block small mt-3" href="{% url 'index2' %}">Login Page</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,6 @@
+{% autoescape off %}
+Hello {{ user.username }},
+Welcome to b@Labs reservation platform, your account has been activated.
+Please, click on the link bellow to login
+http://{{ domain }}{% url 'userlogin' %}
+{% endautoescape %}

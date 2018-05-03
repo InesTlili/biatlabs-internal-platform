@@ -1,0 +1,62 @@
+{% extends 'base2.html' %}
+
+{% block content_block %}
+
+  <div class="container-fluid">
+    <h4>{{ course.title }}</h4>
+<br><br>
+{% if v %}
+<iframe width="780" height="472"
+src="{{ cont.videoURL}}">
+</iframe>
+{% endif %}
+<br>
+{% if v2 %}
+<iframe width="780" height="472"
+src="{{ cont.videoURL2}}">
+</iframe>
+{% endif %}
+<br>
+{% if v3 %}
+<iframe width="780" height="472"
+src="{{ cont.videoURL3}}">
+</iframe>
+  {% endif %}
+<br>
+{% if v4 %}
+<iframe width="780" height="472"
+src="{{ cont.videoURL4}}">
+</iframe>
+{% endif %}
+{% if st %}
+
+<h3>Check out these articles :</h3>
+<ul>
+<li>
+<div class="alert alert-primary" role="alert">
+<a href="{{cont.articleURL}}" class="alert-link">Article 1</a>
+</div>
+</li>
+{% endif %}
+{% if st2 %}
+<li>
+<div class="alert alert-primary" role="alert">
+<a href="{{cont.articleURL2}}" class="alert-link">Article 2</a>
+</div>
+</li>
+{% endif %}
+{% if st3 %}
+<li>
+<div class="alert alert-primary" role="alert">
+<a href="{{cont.articleURL3}}" class="alert-link">Article 3</a>
+</div>
+</li>
+{% endif %}
+</ul>
+
+    {{ cont.textContent }}
+  </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+
+{% extends 'base.html' %}
+{%  load staticfiles %}
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+{% block log_block %}
+
+
+<hr>
+
+
+
+
+<table class="table">
+  <h4>All Lockers</h4>
+  <thead>
+    <tr>
+      <th scope="col">Locker</th>
+      <th scope="col">User</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for l in lockers %}
+    <tr>
+      <td>{{ l.Nearby}} - {{l.reference}}</td>
+      <td>{{l.user}}</td>
+
+      <td><a href={% url 'deletelocker' l.id %} ><i class="fa fa-trash"></i></a></td>
+
+</a></td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

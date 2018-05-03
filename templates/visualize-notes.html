@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %}
+{%  load staticfiles %}
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+{% block log_block %}
+
+<h3>All Notes</h3>
+<hr>
+{% for n in noteslist %}
+<div class="card card-inverse card-info  text-center">
+  <div class="card-block">
+    <blockquote class="card-blockquote">
+      <h5>{{n.product}}</h5>
+      <p>{{n.notes}}</p>
+      <footer>
+        <cite title="Source Title">{{n.user}} - {{n.user.userinfo.startup}}</cite>
+        <a href={% url 'deletenote' n.id %} ><i class="fa fa-trash"></i></a>
+</footer>
+    </blockquote>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+{%  load staticfiles %}
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+{% block log_block %}
+
+
+
+
+
+<table class="table">
+  <h4>All Visitors</h4>
+  <thead>
+    <tr>
+      <th scope="col">Full Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Visited Startup</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time In</th>
+      <th scope="col">Id</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for u in visitors %}
+    <tr>
+      <th scope="row">{{u.fullName}}</th>
+      <td>{{u.email}}</td>
+      <td>{{u.visitedStartup}}</td>
+      <td>{{u.date}}</td>
+      <td>{{u.timeIn}}</td>
+      <td>{{u.cinId}}</td>
+
+
+
+
+</a></td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

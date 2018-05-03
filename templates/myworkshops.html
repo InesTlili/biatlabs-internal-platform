@@ -1,0 +1,46 @@
+
+{% extends 'base.html' %}
+{%  load staticfiles %}
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+{% block log_block %}
+
+
+
+
+
+<table class="table">
+  <h4>All Workshops</h4>
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Theme</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col">Moderator</th>
+
+
+
+
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for u in req %}
+    <tr>
+      <th scope="row">{{u.title}}</th>
+      <td>{{u.theme}}</td>
+      <td>{{u.date}}</td>
+      <td>{{u.time}}</td>
+      <td>{{u.moderator}}</td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

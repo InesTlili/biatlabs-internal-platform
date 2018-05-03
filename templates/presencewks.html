@@ -1,0 +1,53 @@
+
+{% extends 'base.html' %}
+{%  load staticfiles %}
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+{% block log_block %}
+
+
+<hr>
+
+<h4>Presence in workshop <strong>{{wks.title}}</strong></h4>
+
+<div class="row">
+
+    <div class="col-md-6">
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Startup</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for l in stps %}
+    <tr>
+      <td>{{ l.name}}</td>
+
+      <td><a href={% url 'addwkspresence' wks.id l.id  %} ><i class="fa fa-check"></i></a></td>
+
+</a></td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+<div class="col-md-6">
+<br>
+<h5>Present Startups</h5>
+  <ul>
+    {% for l in stpss %}
+    <li>{{l.name}}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

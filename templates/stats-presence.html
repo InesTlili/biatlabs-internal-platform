@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+{% block log_block %}
+
+
+
+{% block more_js %}
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+<script src="{% static 'vendor/bootstrap/js/bootstrap.js' %}"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+</script>
+
+{% endblock %}
+{{ chart2.as_html }}
+
+{{ chart.as_html }}
+
+{% endblock %}

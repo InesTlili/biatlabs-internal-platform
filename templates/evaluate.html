@@ -1,0 +1,153 @@
+
+{% extends 'base.html' %}
+{%  load staticfiles %}
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+{% block log_block %}
+
+
+<hr>
+{% load widget_tweaks %}
+
+
+
+
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i> {{s.name}} Evaluation
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+  <thead class="thead">  <thead>
+    <tr>
+      <th>Axis</th>
+      <th>Mark</th>
+      <th>Notes</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+<tr>
+<td>Founder</td>
+      <form  method="POST">
+        {% csrf_token %}
+<td>
+        <div class="form-group">
+
+            <select name="{{ form.founderMark.name }}">
+              <option {% if form.founderMark.value != None %}value="{{ form.founderMark.value|stringformat:'s' }}"{% endif %}>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="4">5</option>
+            </select>
+</td>
+<td>
+            <textarea type="text"   name="{{ form.founderNotes.name }}" class="form-control"
+                        {% if form.founderNotes.value != None %}value="{{ form.founderNotes.value|stringformat:'s' }}"{% endif %}
+                        ></textarea>
+</td>
+<tr>
+  <td>Customer</td>
+
+            <td>
+              <select name="{{ form.customerMark.name }}">
+                <option {% if form.customerMark.value != None %}value="{{ form.customerMark.value|stringformat:'s' }}"{% endif %}>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="4">5</option>
+              </select>
+            </td>
+            <td>
+              <textarea type="text"   name="{{ form.customerNotes.name }}" class="form-control"
+                          {% if form.customerNotes.value != None %}value="{{ form.customerNotes.value|stringformat:'s' }}"{% endif %}
+                           ></textarea>
+            </td>
+</tr>
+<tr>
+<td>Product</td>
+            <td>
+              <select name="{{ form.productMark.name }}">
+                <option {% if form.productMark.value != None %}value="{{ form.productMark.value|stringformat:'s' }}"{% endif %}>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="4">5</option>
+              </select><br>
+            </td>
+            <td>
+              <textarea type="text"   name="{{ form.productNotes.name }}" class="form-control"
+                          {% if form.productNotes.value != None %}value="{{ form.productNotes.value|stringformat:'s' }}"{% endif %}
+                           /></textarea>
+            </td>
+            </tr>
+            <tr>
+    <td>Team</td>
+            <td>
+              <select name="{{ form.teamMark.name }}">
+                <option {% if form.teamMark.value != None %}value="{{ form.teamMark.value|stringformat:'s' }}"{% endif %}>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="4">5</option>
+              </select>
+            </td>
+            <td>
+              <textarea type="text"   name="{{ form.teamNotes.name }}" class="form-control"
+                          {% if form.teamNotes.value != None %}value="{{ form.teamNotes.value|stringformat:'s' }}"{% endif %}
+                           /></textarea>
+            </td>
+            </tr>
+            <tr>
+<td>Value Proposition</td>
+            <td>
+              <select name="{{ form.vpMark.name }}">
+                <option {% if form.vpMark.value != None %}value="{{ form.vpMark.value|stringformat:'s' }}"{% endif %}>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="4">5</option>
+              </select><br>
+            </td>
+            <td>
+              <textarea type="text"   name="{{ form.vpNotes.name }}" class="form-control"
+                          {% if form.vpNotes.value != None %}value="{{ form.vpNotes.value|stringformat:'s' }}"{% endif %}
+                           /></textarea>
+            </td>
+          </tr>
+          <tr>
+<td>Financial</td>
+            <td>
+              <select name="{{ form.financialMark.name }}">
+                <option {% if form.financialMark.value != None %}value="{{ form.financialMark.value|stringformat:'s' }}"{% endif %}>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="4">5</option>
+              </select>
+            </td>
+            <td>
+              <textarea type="text"   name="{{ form.financialNotes.name }}" class="form-control"
+                          {% if form.financialNotes.value != None %}value="{{ form.financialNotes.value|stringformat:'s' }}"{% endif %}
+                           /></textarea>
+            </td>
+            </tr>
+            <td>
+                <button class="btn btn-sm-primary" type="submit">Submit</button>
+            </td>
+          </form>
+
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+{% endblock %}

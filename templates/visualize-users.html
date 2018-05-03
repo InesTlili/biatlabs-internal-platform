@@ -1,0 +1,40 @@
+
+{% extends 'base.html' %}
+{%  load staticfiles %}
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+{% block log_block %}
+
+
+
+
+
+<table class="table">
+  <h4>All Users</h4>
+  <thead>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Startup</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for u in lis %}
+    <tr>
+      <th scope="row">{{u.username}}</th>
+      <td>{{u.userinfo.startup}}</td>
+
+      <td><a href={% url 'deleteuser' u.id %} ><i class="fa fa-trash"></i></a></td>
+
+</a></td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,71 @@
+
+{% extends 'base.html' %}
+{%  load staticfiles %}
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+{% block log_block %}
+{% load widget_tweaks %}
+
+<ul class="pagination" >
+  <li><a href="{% url 'objectives' s.id 1 %}">Week 1 &nbsp &nbsp</a></li>
+  <li><a href="{% url 'objectives' s.id 2 %}">Week 2 &nbsp &nbsp</a></li>
+  <li><a href="{% url 'objectives' s.id 3 %}">Week 3 &nbsp &nbsp</a></li>
+  <li><a href="{% url 'objectives' s.id 4 %}">Week 4&nbsp &nbsp</a></li>
+  <li><a href="{% url 'objectives' s.id 5 %}">Week 5&nbsp &nbsp</a></li>
+  <li><a href="{% url 'objectives' s.id 6 %}">Week 6&nbsp &nbsp</a></li>
+  <li><a href="{% url 'objectives' s.id 7 %}">Week 7&nbsp &nbsp</a></li>
+  <li><a href="{% url 'objectives' s.id 8 %}">Week 8&nbsp &nbsp</a></li>
+  <li><a href="{% url 'objectives' s.id 9 %}">Week 9&nbsp &nbsp</a></li>
+  <li><a href="{% url 'objectives' s.id 10 %}">Week 10&nbsp &nbsp</a></li>
+  <li><a href="{% url 'objectives' s.id 11 %}">Week 11&nbsp &nbsp</a></li>
+  <li><a href="{% url 'objectives' s.id 12 %}">Week 12&nbsp &nbsp</a></li>
+  <li><a href="{% url 'objectives' s.id 13 %}">Week 13&nbsp &nbsp</a></li>
+  <li><a href="{% url 'objectives' s.id 14 %}">Week 14&nbsp &nbsp</a></li>
+  <li><a href="{% url 'objectives' s.id 15 %}">Week 15&nbsp &nbsp</a></li>
+  <li><a href="{% url 'objectives' s.id 16 %}">Week 16&nbsp &nbsp</a></li>
+
+</ul>
+
+<h5>{{s.name}} Weekly Objectives</h5><br>
+{% for o in obj %}
+{% if o.isDone %}
+<div class="success">
+  <p><strong>#</strong>{{o.content}}</p>
+  <br>
+</div><br>
+{% else %}
+<div class="danger">
+  <p><strong>#</strong>{{o.content}} &nbsp &nbsp
+    <br>
+{% if user.is_staff %}
+     <a href="{% url 'objectiveDone' o.id s.id week %}"><i class="fa fa-thumbs-o-up"></i></a></p>
+{% endif %}
+<br>
+</div><br>
+{% endif %}
+
+{% endfor %}
+<br><br>
+<form method="POST">
+{% csrf_token %}
+  <textarea rows="3" cols="90" name="{{form.content.name}}"
+  {% if form.content.value != None %}value="{{ form.content.value|stringformat:'s' }}"{% endif %} required></textarea>
+    <br>
+    <button type="submit" name="button" class="btn btn-primary">Add weekly Objective</button>
+</form>
+<style media="screen">
+.danger {
+  background-color: #ffdddd;
+  border-left: 6px solid #f44336;
+
+}
+.success {
+  background-color: #CEF6CE;
+  border-left: 6px solid #0B610B;
+</style>
+{% endblock %}

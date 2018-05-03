@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+
+{% block more_css %}
+<link rel="stylesheet" href="{% static 'clockPicker/src/clockpicker.css' %}">
+<link rel="stylesheet" href="{% static 'clockPicker/src/standalone.css' %}">
+<link rel="stylesheet" href="{% static 'datePicker/css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'datePicker/css/datepicker.css' %}">
+
+{% endblock %}
+
+{% block log_block %}
+{% load widget_tweaks %}
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+      {% if itIs %}
+      <div class="alert alert-success" role="alert">
+        {{msg}}
+      </div>
+      {% endif %}
+<div class="container">
+  <form method="POST">
+{% csrf_token %}
+
+          <div class="form-group">
+                <label for="">Title</label>
+                {% render_field form.title class="form-control" %}
+
+          </div>
+          <div class="form-group">
+            <label for="">Theme</label>
+            {% render_field form.theme class="form-control" %}
+
+          </div>
+          <div class="form-group">
+                <label for="">New Theme</label>
+                {% render_field form.otherTheme class="form-control" %}
+
+          </div>
+          <label for="">Date</label>
+
+          <div class="input-group datepicker">
+
+            <span class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+            </span>
+            <input data-toggle="datepicker" type="text"   name="{{ form.date.name }}" class="form-control"
+                        {% if form.date.value != None %}value="{{ form.date.value|stringformat:'s' }}"{% endif %}
+                        required />
+
+          </div>
+          <br>
+          <label for="">Time</label>
+
+          <div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fa fa-clock-o"></i></span>
+            </div>
+              <input type="text" class="form-control" name="{{ form.time.name }}"
+                          {% if form.time.value != None %}value="{{ form.time.value|stringformat:'s' }}"{% endif %}
+                          required>
+          </div>
+          <br>
+          <div class="form-group">
+                <label for="">Duration</label>
+                {% render_field form.duration class="form-control" %}
+
+          </div>
+          <div class="form-group">
+                <label for="">Moderator</label>
+                {% render_field form.moderator class="form-control" %}
+
+          </div>
+
+          <button class="btn btn-primary btn-block" type="submit">Add Workshop</button>
+</form>
+</div>
+</div></div>
+{% block more_js %}
+<script type="text/javascript" src="{% static 'clockPicker/assets/js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'clockPicker/assets/js/bootstrap.js' %}"></script>
+<script type="text/javascript" src="{% static 'clockPicker/assets/js/highlight.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'clockPicker/assets/js/html5shiv.js' %}"></script>
+<script type="text/javascript" src="{% static 'clockPicker/assets/js/respond.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'clockPicker/src/clockpicker.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'datePicker/js/datepicker.js' %}"></script>
+
+
+<script type="text/javascript">
+  $('[data-toggle="datepicker"]').datepicker({
+
+    startDate: Date.now()
+  });
+</script>
+<script type="text/javascript">
+$('.clockpicker').clockpicker({
+
+  placement: 'bottom',
+    align: 'right',
+    autoclose: true,
+    'default': '20:48'
+});
+</script>
+
+
+
+
+
+{% endblock %}
+
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block log_block %}
+
+{% load widget_tweaks %}
+<br>
+<br>
+<h3>{{message}}</h3>
+<hr>
+<p class="card-text"><small class="text-muted"></small></p>
+
+  <div class="row">
+      <div class="col-md-3">
+      </div>
+<div class="col-md-6">
+
+      <form method="POST" novalidate>
+            {% csrf_token %}
+
+            {% for hidden_field in needform.hidden_fields %}
+              {{ hidden_field }}
+            {% endfor %}
+            {% if needform.non_field_errors %}
+              <div class="alert alert-danger" role="alert">
+                {% for error in needform.non_field_errors %}
+                  {{ error }}
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            <div class="col">
+              <div class="form-group " >
+                  <label for=""></label>
+                  {% if needform.is_bound %}
+                    {% if needform.product.errors %}
+                      {% render_field needform.product class="form-control is-invalid" %}
+                      {% for error in needform.product.errors %}
+                        <div class="invalid-feedback">
+                          {{ error }}
+                        </div>
+                      {% endfor %}
+                    {% else %}
+                      {% render_field needform.product class="form-control is-valid" %}
+                    {% endif %}
+                  {% else %}
+                    {% render_field needform.product class="form-control" %}
+                  {% endif %}
+
+                  {% if needform.product.help_text %}
+                    <small class="form-text text-muted">{{ needform.product.help_text }}</small>
+                  {% endif %}
+              </div>
+
+              <div class="form-group ">
+                  <label for=""></label>
+                  {% if needform.is_bound %}
+                    {% if needform.notes.errors %}
+                    <textarea class="form-control is-invalid" rows="8" name="{{needform.notes.name}}"
+                    {% if needform.notes.value != None %}value="{{ needform.notes.value|stringformat:'s' }}"{% endif %}
+                    required></textarea>
+                      {% for error in needform.notes.errors %}
+                        <div class="invalid-feedback">
+                          {{ error }}
+                        </div>
+                      {% endfor %}
+                    {% else %}
+                    <textarea class="form-control is-valid" rows="8" name="{{needform.notes.name}}"
+                    {% if needform.notes.value != None %}value="{{ needform.notes.value|stringformat:'s' }}"{% endif %}
+                    required>   </textarea>                      {% endif %}
+                  {% else %}
+                  <textarea class="form-control" rows="8" name="{{needform.notes.name}}"
+                  {% if needform.notes.value != None %}value="{{ needform.notes.value|stringformat:'s' }}"{% endif %}
+                  required>        </textarea>          {% endif %}
+
+                  {% if needform.notes.help_text %}
+                    <small class="form-text text-muted">{{ needform.notes.help_text }}</small>
+                  {% endif %}
+              </div>
+                <button type="submit" name="button" class="btn btn-primary">Submit</button>
+          </form>
+</div>
+</div>
+
+{% endblock %}

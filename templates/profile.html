@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{%  load staticfiles %}
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+{% block log_block %}
+
+{% load widget_tweaks %}
+
+
+        <form method="POST">
+          {% csrf_token %}
+
+          <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                {% render_field form.password class="form-control"%}
+
+          </div>
+
+
+          <button class="btn btn-primary btn-block" type="submit">Save</button>
+        </form>
+
+
+
+{% endblock %}

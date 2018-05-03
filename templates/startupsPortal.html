@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %}
+{%  load staticfiles %}
+{% block class_block %}
+fixed-nav sticky-footer bg-dark
+{% endblock %}
+
+{% block id_block %}
+page-top
+{% endblock %}
+{% block log_block %}
+
+{% for s in stps %}
+<div class="card-group">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ s.name }}</h5>
+      <p class="card-text">{{ s.description }}</p>
+      <p class="card-text"><small class="text-muted"></small></p>
+      <a href="{% url 'objectives' s.id 1 %}"><span class="badge badge-primary">Weekly objectives</span></a>
+      {% if user.is_staff %}
+      <a href="{% url 'evaluate' s.id %}"><span class="badge badge-danger">Evaluation</span></a>
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+{% endfor %}
+{% endblock %}
